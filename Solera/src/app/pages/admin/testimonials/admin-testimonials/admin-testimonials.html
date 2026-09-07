@@ -1,0 +1,118 @@
+<div class="adm-page">
+  <div class="adm-page-header">
+    <div>
+      <h1 class="adm-page-title">Testimonials</h1>
+      <p class="adm-page-sub">Manage customer testimonials</p>
+    </div>
+    <button class="adm-btn-primary" (click)="openAdd()">
+      + Add Testimonial
+    </button>
+  </div>
+
+  @if (successMessage()) {
+    <div class="adm-alert-success">{{ successMessage() }}</div>
+  }
+
+  @if (showForm()) {
+    <div class="adm-modal-backdrop" (click)="showForm.set(false)">
+      <div class="adm-modal" (click)="$event.stopPropagation()">
+        <div class="adm-modal-header">
+          <h2 class="adm-modal-title">{{ editingId() ? 'Edit' : 'Add New' }} Testimonial</h2>
+          <button class="adm-modal-close"
+                  (click)="showForm.set(false)">✕</button>
+        </div>
+        <div class="adm-form-grid">
+          <div class="adm-form-group">
+            <label class="adm-label">Customer Name *</label>
+            <input type="text" [(ngModel)]="form.customerName"
+                   class="adm-input" placeholder="John Doe" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Customer Role</label>
+            <app-custom-dropdown
+              [options]="roleOptions"
+              [modelValue]="form.customerRole"
+              (modelValueChange)="form.customerRole = $event"
+              placeholder="Select role">
+            </app-custom-dropdown>
+          </div>
+          <div class="adm-form-group adm-col-2">
+            <label class="adm-label">Content *</label>
+            <textarea [(ngModel)]="form.content"
+                      class="adm-textarea"
+                      placeholder="What the customer said..."
+                      rows="4"></textarea>
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Rating (1-5)</label>
+            <input type="number" [(ngModel)]="form.rating"
+                   class="adm-input" min="1" max="5" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Display Order</label>
+            <input type="number" [(ngModel)]="form.displayOrder"
+                   class="adm-input" min="1" />
+          </div>
+        </div>
+        <div class="adm-modal-footer">
+          <button class="adm-btn-outline"
+                  (click)="showForm.set(false)">Cancel</button>
+          <button class="adm-btn-primary" (click)="save()"
+                  [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Saving...' : (editingId() ? 'Update' : 'Add Testimonial') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="adm-card">
+    <div class="adm-table-wrap">
+      <table class="adm-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Content</th>
+            <th>Rating</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (t of testimonials(); track t.id) {
+            <tr>
+              <td>
+                <div class="customer-name">{{ t.customerName }}</div>
+              </td>
+              <td class="date-cell">{{ t.customerRole }}</td>
+              <td class="customer-email">{{ t.content.length > 80 ? (t.content | slice:0:80) + '...' : t.content }}</td>
+              <td class="date-cell">{{ '★'.repeat(t.rating) }}{{ '☆'.repeat(5 - t.rating) }}</td>
+              <td>
+                <button
+                  class="toggle-btn"
+                  [class.toggle-active]="t.isActive"
+                  [class.toggle-inactive]="!t.isActive"
+                  (click)="toggle(t.id)">
+                  {{ t.isActive ? 'Active' : 'Inactive' }}
+                </button>
+              </td>
+              <td>
+                <div class="adm-actions-row">
+                  <button class="adm-edit-btn"
+                          (click)="openEdit(t)">
+                    Edit
+                  </button>
+                  <button class="adm-delete-btn"
+                          (click)="delete(t.id)">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

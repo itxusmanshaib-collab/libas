@@ -1,0 +1,291 @@
+/* ═══════════════════════════════════════════
+   Admin Notifications — Page Styles
+   ═══════════════════════════════════════════ */
+
+.adm-page {
+  max-width: 800px;
+}
+
+/* ═══════════════════════════════════════════
+   Page Header
+   ═══════════════════════════════════════════ */
+
+.adm-page-header {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adm-btn-primary {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Alert
+   ═══════════════════════════════════════════ */
+
+.adm-alert-success {
+  animation: alertSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Notification List
+   ═══════════════════════════════════════════ */
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ═══════════════════════════════════════════
+   Notification Card
+   ═══════════════════════════════════════════ */
+
+.notif-card {
+  background: #fff;
+  border: 1px solid #e8e8e6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardSlideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.05s; }
+  &:nth-child(3) { animation-delay: 0.1s; }
+  &:nth-child(4) { animation-delay: 0.15s; }
+  &:nth-child(5) { animation-delay: 0.2s; }
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Notification Preview
+   ═══════════════════════════════════════════ */
+
+.notif-preview {
+  padding: 14px 20px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: opacity 0.2s;
+}
+
+.notif-preview-sm {
+  padding: 12px 16px;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+   Notification Meta
+   ═══════════════════════════════════════════ */
+
+.notif-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fafaf8;
+  border-top: 1px solid #f0f0ee;
+}
+
+.date-cell {
+  font-size: 12px;
+  color: #888;
+}
+
+.status-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: transform 0.15s;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+.adm-delete-btn {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+  cursor: pointer;
+  margin-left: auto;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #dc2626;
+    color: #fff;
+    border-color: #dc2626;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Modal
+   ═══════════════════════════════════════════ */
+
+.adm-modal-backdrop {
+  animation: backdropIn 0.2s ease;
+}
+
+.adm-modal {
+  animation: modalSlideIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adm-modal-footer {
+  .adm-btn-primary {
+    min-width: 100px;
+    text-align: center;
+  }
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Preview Banner (in modal)
+   ═══════════════════════════════════════════ */
+
+.notif-preview {
+  border-radius: 8px;
+  margin-top: 4px;
+  transition: all 0.2s;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+/* ═══════════════════════════════════════════
+   Form Inputs
+   ═══════════════════════════════════════════ */
+
+.adm-input {
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: #d4a574;
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .adm-page {
+    padding: 64px 16px 40px;
+  }
+
+  .adm-page-header {
+    flex-direction: column;
+    gap: 12px;
+
+    .adm-btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .adm-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-modal {
+    margin: 16px;
+    padding: 20px;
+  }
+
+  .notif-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .adm-delete-btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .adm-page-header h1 {
+    font-size: 18px;
+  }
+
+  .notif-preview,
+  .notif-preview-sm {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .status-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+}

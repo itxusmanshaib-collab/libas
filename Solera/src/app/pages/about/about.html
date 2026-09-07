@@ -1,0 +1,118 @@
+<div class="about-page">
+
+  <!-- ── Hero ── -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <span class="hero-badge">✦ Our Story</span>
+      <h1>Denim that puts <span class="text-gold">your day first</span></h1>
+      <p>
+        {{ config.appName() }} started with a simple mission: give Pakistan
+        better-fitting jeans, honest quality and a wardrobe that works hard.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section class="about-stats">
+    <div class="stats-container">
+      <div class="stat">
+        <div class="stat-num">2.4k+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Denim styles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.9 ★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5 Years</div>
+        <div class="stat-label">Of Trust</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Story ── -->
+  <section class="section">
+    <div class="section-container story-grid">
+      <div class="story-image">
+        <div class="story-image-placeholder">
+          <span>{{ config.appName() }}</span>
+        </div>
+      </div>
+      <div class="story-text">
+        <span class="section-tag">Why We Started</span>
+        <h2>Every fit has its own story</h2>
+        <p>
+          We noticed too many jeans were either uncomfortable, over-designed,
+          or impossible to wear more than one way. That's when we decided to
+          build denim with dependable fits, durable fabric and room for your
+          own point of view.
+        </p>
+        <p>
+          Today, every {{ config.appName() }} piece is shaped around the same goal:
+          making the everyday uniform feel considered, comfortable and yours.
+        </p>
+        <a routerLink="/products" class="btn-gold">Explore the collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Values ── -->
+  <section class="section bg-light">
+    <div class="section-container">
+      <div class="section-header-center">
+        <span class="section-tag">What We Believe</span>
+        <h2>Our Core Values</h2>
+      </div>
+      <div class="values-grid">
+        @for (value of values; track value.title) {
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path [attr.d]="value.icon"/></svg>
+            </div>
+            <h3>{{ value.title }}</h3>
+            <p>{{ value.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section class="section">
+    <div class="section-container">
+      <div class="section-header-center">
+        <span class="section-tag">Our Journey</span>
+        <h2>From an Idea to a Movement</h2>
+      </div>
+      <div class="timeline">
+        @for (m of milestones; track m.year; let i = $index) {
+          <div class="timeline-item" [class.timeline-item-right]="i % 2 !== 0">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-year">{{ m.year }}</span>
+              <h4>{{ m.title }}</h4>
+              <p>{{ m.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="about-cta">
+    <div class="cta-container">
+      <h2>Find the pair you will live in.</h2>
+      <p>Clean silhouettes, considered washes and denim made for repeat wear.</p>
+      <div class="cta-btns">
+        <a routerLink="/products" class="btn-gold">Shop Now</a>
+        <a routerLink="/contact" class="btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+</div>

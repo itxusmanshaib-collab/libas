@@ -1,0 +1,209 @@
+<div class="to-page">
+
+  <!-- Page Header -->
+  <div class="to-header">
+    <div class="to-header-inner">
+      <h1 class="to-title">Track Your Order</h1>
+      <p class="to-sub">
+        Enter your order ID to see the current status
+      </p>
+    </div>
+  </div>
+
+  <div class="to-container">
+
+    <!-- Search Box -->
+    <div class="to-search-card">
+      <div class="to-search-label">Order ID</div>
+      <div class="to-search-row">
+        <input
+          type="text"
+          [(ngModel)]="orderId"
+          placeholder="e.g. 1234"
+          class="to-input"
+          (keyup.enter)="searchOrder()"
+          aria-label="Order ID"
+        />
+        <button
+          class="to-search-btn"
+          (click)="searchOrder()"
+          [disabled]="isSearching()">
+          @if (isSearching()) {
+            <span class="btn-spinner-dark"></span>
+            Searching...
+          } @else {
+            Track Order
+          }
+        </button>
+      </div>
+      <p class="to-search-hint">
+        Find your order ID in your confirmation email or
+        <a routerLink="/profile/orders" class="to-link">My Orders</a>
+      </p>
+    </div>
+
+    <!-- Error -->
+    @if (errorMessage()) {
+      <div class="to-error">
+        <span class="to-error-icon">⚠️</span>
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <!-- Order Found -->
+    @if (order()) {
+      <div class="to-result">
+
+        <!-- Order Header -->
+        <div class="to-order-header">
+          <div>
+            <div class="to-order-id">Order #{{ order()!.orderId }}</div>
+            <div class="to-order-date">
+              Placed on {{ order()!.orderDate | date:'dd MMM yyyy, hh:mm a' }}
+            </div>
+          </div>
+          <div class="to-status-badge"
+               [style.color]="getStatusColor(order()!.status)"
+               [style.background]="getStatusBg(order()!.status)">
+            {{ order()!.status }}
+          </div>
+        </div>
+
+        <!-- Cancelled State -->
+        @if (isCancelled()) {
+          <div class="to-cancelled">
+            <div class="cancelled-icon">❌</div>
+            <h3>Order Cancelled</h3>
+            <p>
+              This order has been cancelled.
+              <a routerLink="/products" class="to-link">Shop again</a>
+            </p>
+          </div>
+        } @else {
+
+          <!-- Status Stepper -->
+          <div class="to-stepper">
+            @for (step of statusSteps; track step.key; let i = $index) {
+              <div class="to-step"
+                   [class.step-completed]="isStepCompleted(i)"
+                   [class.step-active]="isStepActive(i)"
+                   [class.step-pending]="!isStepCompleted(i) && !isStepActive(i)">
+
+                <!-- Step Circle -->
+                <div class="step-circle">
+                  @if (isStepCompleted(i)) {
+                    <span class="step-check" aria-label="Completed">✓</span>
+                  } @else {
+                    <span class="step-icon" aria-hidden="true">
+                      {{ step.icon }}
+                    </span>
+                  }
+                </div>
+
+                <!-- Connector Line -->
+                @if (i < statusSteps.length - 1) {
+                  <div class="step-line"
+                       [class.line-filled]="isStepCompleted(i)">
+                  </div>
+                }
+
+                <!-- Step Label -->
+                <div class="step-label">
+                  <div class="step-name">{{ step.label }}</div>
+                  @if (isStepActive(i)) {
+                    <div class="step-desc">{{ step.desc }}</div>
+                  }
+                </div>
+
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Delivery Address -->
+        <div class="to-info-grid">
+          <div class="to-info-card">
+            <div class="info-card-title">
+              <span aria-hidden="true">📍</span> Delivery Address
+            </div>
+            <div class="info-card-value">
+              {{ order()!.deliveryAddress || 'Not specified' }}
+            </div>
+          </div>
+          <div class="to-info-card">
+            <div class="info-card-title">
+              <span aria-hidden="true">💰</span> Order Total
+            </div>
+            <div class="info-card-value">
+              {{ formatPrice(order()!.totalAmount) }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Items -->
+        <div class="to-items">
+          <div class="to-items-title">Order Items</div>
+          @for (item of order()!.items; track item.productName) {
+            <div class="to-item">
+              <div class="to-item-img">
+                @if (item.productImage) {
+                   <img [src]="getImageUrl(item.productImage)"
+                       [alt]="item.productName"
+                       class="item-img" />
+                } @else {
+                  <div class="item-img-ph">
+                    {{ item.productName.charAt(0) }}
+                  </div>
+                }
+              </div>
+              <div class="to-item-info">
+                <div class="item-name">{{ item.productName }}</div>
+                <div class="item-qty">Qty: {{ item.quantity }}</div>
+              </div>
+              <div class="item-price">
+                {{ formatPrice(item.subTotal) }}
+              </div>
+            </div>
+          }
+
+          <!-- Total Row -->
+          <div class="to-total-row">
+            <span>Total</span>
+            <span class="to-total-amount">
+              {{ formatPrice(order()!.totalAmount) }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="to-actions">
+          <a routerLink="/products" class="to-btn-outline">
+            Continue Shopping
+          </a>
+          <a routerLink="/profile/orders" class="to-btn-primary">
+            All My Orders
+          </a>
+        </div>
+
+      </div>
+    }
+
+    <!-- No Search Yet -->
+    @if (!hasSearched() && !isSearching()) {
+      <div class="to-empty">
+        <div class="to-empty-icon" aria-hidden="true">📦</div>
+        <h3>Track your order</h3>
+        <p>
+          Enter your order ID above to see real-time
+          status updates
+        </p>
+        @if (auth.isLoggedIn()) {
+          <a routerLink="/profile/orders" class="to-view-orders">
+            View all my orders →
+          </a>
+        }
+      </div>
+    }
+
+  </div>
+</div>

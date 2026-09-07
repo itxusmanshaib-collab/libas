@@ -1,0 +1,98 @@
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-container">
+
+      <!-- Brand + Newsletter -->
+      <div class="footer-brand">
+        <div class="footer-logo">{{ settings.siteName() }}</div>
+        <p class="footer-tagline">{{ settings.siteTagline() }}</p>
+        <p class="footer-desc">
+          Premium men's denim made for real days, repeat wears and personal style.
+          Find your fit, then make it yours.
+        </p>
+
+        <div class="newsletter">
+          <label class="newsletter-label">Subscribe for offers &amp; updates</label>
+          <form class="newsletter-form" (ngSubmit)="subscribeNewsletter()">
+            <input
+              type="email"
+              placeholder="Your email address"
+              [ngModel]="newsletterEmail()"
+              (ngModelChange)="newsletterEmail.set($event)"
+              name="newsletterEmail"
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          @if (newsletterMessage()) {
+            <p class="newsletter-msg" [class.success]="newsletterSuccess()">
+              {{ newsletterMessage() }}
+            </p>
+          }
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          @for (link of quickLinks; track link.path) {
+            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          @for (link of companyLinks; track link.path) {
+            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul class="contact-list">
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1L6.6 10.8Z"/></svg>
+            <span>{{ settings.whatsappNumber() || '+92 300 1234567' }}</span>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5C2 4.7 2.7 4 3.5 4h17c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5v-13Zm2.4.5 7.1 5.3c.3.2.7.2 1 0L19.6 6H4.4Z"/></svg>
+            <span>hello&#64;libasjunior.pk</span>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+            <span>Lahore, Pakistan</span>
+          </li>
+        </ul>
+
+        <div class="social-row">
+          @for (social of socialLinks; track social.name) {
+            @if (social.url) {
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer"
+               class="social-btn" [attr.aria-label]="social.name">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path [attr.d]="social.icon"/></svg>
+            </a>
+            }
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-container footer-bottom-inner">
+      <p>{{ settings.footerText() || ('© ' + currentYear + ' ' + settings.siteName() + '. All rights reserved.') }}</p>
+      <div class="payment-badges">
+        <span>Cash on Delivery</span>
+        <span class="dot">&bull;</span>
+        <span>Secure Checkout</span>
+      </div>
+    </div>
+  </div>
+</footer>

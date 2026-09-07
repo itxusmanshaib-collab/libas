@@ -1,0 +1,139 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <!-- App Name -->
+    <div class="auth-brand">
+      <h1>{{ config.appName() }}</h1>
+      <p>{{ config.appTagline() }}</p>
+    </div>
+
+    <div class="auth-form-box">
+
+      <h2 class="auth-title">Create Account</h2>
+
+      <!-- Success Message -->
+      @if (successMessage()) {
+        <div class="field-error-banner success-banner">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          {{ successMessage() }}
+        </div>
+      }
+
+      <!-- Error Message (server) -->
+      @if (errorMessage()) {
+        <div class="field-error-banner">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          {{ errorMessage() }}
+        </div>
+      }
+
+      <!-- Full Name -->
+      <div class="form-field">
+        <label class="field-label">
+          Full Name <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          [(ngModel)]="fullName"
+          placeholder="Usman Ali"
+          [class.input-error]="nameError()"
+        />
+        @if (nameError()) {
+          <span class="field-error-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {{ nameError() }}
+          </span>
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <label class="field-label">
+          Email <span class="required">*</span>
+        </label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          placeholder="ali@example.com"
+          [class.input-error]="emailError()"
+        />
+        @if (emailError()) {
+          <span class="field-error-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {{ emailError() }}
+          </span>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-field">
+        <label class="field-label">
+          Password <span class="required">*</span>
+        </label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Minimum 6 characters"
+          [class.input-error]="passwordError()"
+        />
+        @if (passwordError()) {
+          <span class="field-error-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {{ passwordError() }}
+          </span>
+        }
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-field">
+        <label class="field-label">
+          Confirm Password <span class="required">*</span>
+        </label>
+        <input
+          type="password"
+          [(ngModel)]="confirmPassword"
+          placeholder="Re-enter your password"
+          [class.input-error]="confirmPasswordError()"
+        />
+        @if (confirmPasswordError()) {
+          <span class="field-error-msg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {{ confirmPasswordError() }}
+          </span>
+        }
+      </div>
+
+      <!-- Register Button -->
+      <button
+        class="auth-btn"
+        (click)="onRegister()"
+        [disabled]="isLoading()">
+        @if (isLoading()) {
+          <span class="btn-spinner"></span>
+          Creating account...
+        } @else {
+          Create Account
+        }
+      </button>
+
+      <!-- Login Link -->
+      <p class="auth-link">
+        Already have an account?
+        <a routerLink="/auth/login">Sign In</a>
+      </p>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="legal-page privacy-page min-h-screen bg-[#fbf9f8] text-slate-700 py-12 px-4 sm:px-6 lg:px-8 font-sans"
+  [style.--legal-accent]="settings.legalAccent()"
+  [style.--legal-page-bg]="settings.legalPageBackground()"
+  [style.--legal-surface]="settings.legalSurface()"
+  [style.--legal-heading]="settings.legalHeading()">
+  <div class="max-w-6xl mx-auto w-full">
+    
+    <div class="border-b border-slate-200/60 pb-8 mb-10 space-y-3 text-left">
+      <span class="text-xs font-bold tracking-widest text-[#DB1F44] uppercase px-3 py-1 rounded-full bg-[#DB1F44]/5 inline-block animate-privacy">
+        Legal Compliance
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 animate-privacy">
+        Privacy Policy
+      </h1>
+      <p class="text-sm text-slate-400 animate-privacy flex items-center gap-2">
+        <span>Last Updated: June 2026</span>
+        <span class="inline-block w-1 h-1 rounded-full bg-slate-300"></span>
+        <span>Version 1.1</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <div class="hidden lg:block lg:col-span-4 sticky top-8 bg-white border border-slate-100 p-6 rounded-2xl shadow-xs animate-privacy">
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">On This Page</h3>
+        <nav class="space-y-1">
+          @for (item of sections; track item.id) {
+            <button 
+              (click)="scrollToSection(item.id)"
+              class="w-full text-left text-sm py-2 px-3 rounded-lg font-medium text-slate-600 hover:text-[#DB1F44] hover:bg-[#DB1F44]/5 transition-all duration-200 cursor-pointer flex items-center justify-between group"
+            >
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-[#DB1F44] transition-all">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          }
+        </nav>
+        
+        <div class="mt-6 pt-6 border-t border-slate-100 text-xs text-slate-400 space-y-2">
+          <p>Have privacy questions or compliance requests?</p>
+          <a routerLink="/contact" class="text-[#DB1F44] font-bold hover:underline block">Contact Privacy Team &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-span-1 lg:col-span-8 space-y-10 bg-white border border-slate-100 p-6 sm:p-10 rounded-3xl shadow-xs animate-privacy">
+        
+        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5 text-sm leading-relaxed text-slate-600">
+          <span class="font-bold text-slate-900 block mb-1">Summary Introduction</span>
+          At Solera, your privacy is fundamental to our mission of delivering intelligent, safe skincare and sun protection habits trackability. This Policy outlines how we transparently manage, handle, and safeguard your personal details when utilizing our website platforms.
+        </div>
+
+        <section id="collection" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            1. Information We Collect
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            We collect information you explicitly provide to us when setting up an account profile, submitting messages via our contact interfaces, or purchasing skincare items. This includes:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+            <li><strong class="text-slate-800">Identity Details:</strong> Full name, contact credentials, and profile usernames.</li>
+            <li><strong class="text-slate-800">Contact Specifics:</strong> Valid email addresses, physical mailing addresses, and telephone sequences.</li>
+            <li><strong class="text-slate-800">Skincare Metrics:</strong> Optional demographic skin traits, lifestyle routine details, and routine monitoring logs used to configure your customized platform advice profiles.</li>
+          </ul>
+        </section>
+
+        <section id="usage" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            2. How We Use Your Data
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            Solera processes personal parameters selectively based on strict operational dependencies to achieve the following:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+            <li>To operate individual account profiles and fulfill skincare purchases.</li>
+            <li>To compute accurate localized UV exposure analytics if access permissions are authorized.</li>
+            <li>To optimize overall user experience, interface styling, and feature configurations.</li>
+          </ul>
+        </section>
+
+        <section id="sharing" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            3. Data Sharing & Third Parties
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            <span class="font-bold text-slate-900">We do not sell, rent, or trade your personal skincare data.</span> Data shares are restricted exclusively to accredited modern infrastructure processors required for platform operation, such as payment gateways, hosting environments, or direct product fulfillment networks.
+          </p>
+        </section>
+
+        <section id="security" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            4. Security and Storage
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            We employ robust data protection methods including secure HTTPS transmission, managed row-level isolation architecture, and encrypted database mechanisms to minimize intercept risks. No system is absolutely infallible, but we enforce strict precautions to keep data securely guarded.
+          </p>
+        </section>
+
+        <section id="rights" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            5. Your Rights & Choices
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            Depending on your physical location rules (such as global privacy mandates), you retain standard administrative oversight privileges regarding your profile context:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+            <li>The right to access, export, or audit records held in our data layers.</li>
+            <li>The right to modify errors or completely request profile deletion.</li>
+            <li>The right to immediately unsubscribe from non-essential notification campaigns.</li>
+          </ul>
+        </section>
+
+        <section id="updates" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            6. Updates to This Policy
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            We reserve the right to revise this document to reflect changes in our data processing frameworks or shifting regulatory guidelines. Any modifications will be declared directly here, accompanied by an updated revision date stamps.
+          </p>
+        </section>
+
+        <div class="border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
+          &copy; {{ currentYear }} Solera Skin Systems. All rights reserved. Managed compliance documentation.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

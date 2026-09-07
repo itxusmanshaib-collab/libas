@@ -1,0 +1,424 @@
+<!-- Loading State -->
+@if (isLoading()) {
+  <div class="home-loading">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+}
+
+@if (!isLoading()) {
+
+  <!-- ── Notification Bar ── -->
+  @if (notification() && showNotification()) {
+    <div class="notif-bar"
+         [style.background]="notification()!.backgroundColor"
+         [style.color]="notification()!.textColor">
+      <span class="notif-text">{{ notification()!.message }}</span>
+      <button class="notif-close"
+              (click)="closeNotification()"
+              aria-label="Close notification">✕</button>
+    </div>
+  }
+
+  <!-- ── Hero Section ── -->
+  <section class="hero-section" [style.background]="settings.heroBackground()" [style.color]="settings.heroTextColor()">
+    @if (banners().length > 0) {
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">✦ {{ settings.heroEyebrow() }}</span>
+          <h1 class="hero-title" [style.color]="settings.heroTextColor()">{{ activeBanner?.title || settings.heroTitle() }}</h1>
+          <p class="hero-sub" [style.color]="settings.heroTextColor()">{{ activeBanner?.subTitle || settings.heroSubtitle() }}</p>
+          <div class="hero-btns">
+            <a [routerLink]="activeBanner?.linkUrl || '/products'"
+               class="btn-gold">
+              {{ activeBanner?.buttonText || settings.heroButtonText() }}
+            </a>
+            <a routerLink="/products" class="btn-outline">
+              Explore Collection
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          @if (activeBanner?.imageUrl) {
+            <img [src]="imageService.getImageUrl(activeBanner!.imageUrl)"
+                 [alt]="activeBanner!.title"
+                 class="hero-img" />
+          } @else {
+            <div class="hero-img-placeholder">
+              <span>{{ config.appName() }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      @if (banners().length > 1) {
+        <div class="banner-controls">
+          <button class="banner-arrow" (click)="prevBanner()" aria-label="Previous">‹</button>
+          <div class="banner-dots">
+            @for (banner of banners(); track banner.id; let i = $index) {
+              <button class="dot"
+                      [class.dot-active]="i === activeBannerIndex()"
+                      (click)="goToBanner(i)"
+                      [attr.aria-label]="'Banner ' + (i + 1)">
+              </button>
+            }
+          </div>
+          <button class="banner-arrow" (click)="nextBanner()" aria-label="Next">›</button>
+        </div>
+      }
+    } @else {
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">✦ {{ settings.heroEyebrow() }}</span>
+          <h1 class="hero-title" [style.color]="settings.heroTextColor()">
+            {{ settings.heroTitle() }}
+          </h1>
+          <p class="hero-sub" [style.color]="settings.heroTextColor()">
+            {{ settings.heroSubtitle() }}
+          </p>
+          <div class="hero-btns">
+            <a [routerLink]="settings.heroButtonUrl()" class="btn-gold">{{ settings.heroButtonText() }}</a>
+            <a routerLink="/about" class="btn-outline">Our story</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-img-placeholder">
+            <div class="placeholder-circle"></div>
+            <span>{{ config.appName() }}</span>
+            <small>{{ config.appTagline() }}</small>
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">2.4k+</div>
+        <div class="stat-label">Happy customers</div>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="stat-num">4.9 ★</div>
+        <div class="stat-label">Average rating</div>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Made for everyday</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Categories Carousel ── -->
+  <section class="section bg-white">
+    <div class="section-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Shop by category</h2>
+          <p class="section-sub">The fits you reach for first</p>
+        </div>
+        <a routerLink="/products" class="view-all">View all</a>
+      </div>
+
+      @if (categories().length > 0) {
+        <div class="categories-carousel">
+          <button class="cat-arrow cat-arrow-left" (click)="scrollCategories('left')" aria-label="Scroll left">‹</button>
+          <div class="categories-track">
+            @for (cat of categories(); track cat.id) {
+              <a [routerLink]="['/products']"
+                 [queryParams]="{category: cat.id}"
+                 class="cat-card">
+                <div class="cat-icon">
+                  @if (cat.imageUrl) {
+                    <img [src]="imageService.getImageUrl(cat.imageUrl)" [alt]="cat.name" class="cat-img" />
+                  } @else {
+                    <span class="cat-placeholder">{{ cat.name.charAt(0) }}</span>
+                  }
+                </div>
+                <div class="cat-name">{{ cat.name }}</div>
+                <div class="cat-count">{{ cat.productCount }} products</div>
+              </a>
+            }
+          </div>
+          <button class="cat-arrow cat-arrow-right" (click)="scrollCategories('right')" aria-label="Scroll right">›</button>
+        </div>
+      } @else {
+        <div class="empty-state"><p>No categories available</p></div>
+      }
+    </div>
+  </section>
+
+  <!-- ── Featured Products ── -->
+  <section class="section bg-light featured-products-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">Selected for you</span>
+          <h2 class="section-title">Featured products</h2>
+          <p class="section-sub">Fresh washes. Reliable fits. No fuss.</p>
+        </div>
+        <a routerLink="/products" class="view-all">View all</a>
+      </div>
+
+      @if (products().length > 0) {
+        <div class="products-grid">
+          @for (product of products().slice(0, 8); track product.id) {
+            <div class="prod-card">
+              <a [routerLink]="['/product-detail', product.id]" class="prod-image">
+                @if (product.imageUrl) {
+                  <img [src]="imageService.getImageUrl(product.imageUrl)" [alt]="product.name" class="prod-img" />
+                } @else {
+                  <div class="prod-img-placeholder">{{ product.name.charAt(0) }}</div>
+                }
+                @if (product.stock < 5 && product.stock > 0) {
+                  <span class="prod-badge badge-hot">Low stock</span>
+                }
+                @if (product.stock === 0) {
+                  <span class="prod-badge badge-out">Out of stock</span>
+                }
+                @if (product.hasDiscount) {
+                  <span class="prod-badge badge-discount">-{{ product.discountPercentage }}%</span>
+                }
+                <div class="prod-overlay">
+                  <span class="prod-overlay-btn">Quick View</span>
+                </div>
+              </a>
+              <div class="prod-info">
+                <a [routerLink]="['/product-detail', product.id]" class="prod-name">
+                  {{ product.name }}
+                </a>
+                <p class="prod-desc">{{ product.description }}</p>
+                <div class="prod-bottom">
+                  <div class="prod-price-wrap">
+                    @if (product.hasDiscount) {
+                      <span class="prod-price-final">{{ formatPrice(product.finalPrice ?? product.price) }}</span>
+                      <span class="prod-price-original">{{ formatPrice(product.price) }}</span>
+                    } @else {
+                      <span class="prod-price">{{ formatPrice(product.price) }}</span>
+                    }
+                  </div>
+                  <a [routerLink]="['/product-detail', product.id]"
+                     class="prod-add-btn"
+                     [class.disabled]="product.stock === 0">
+                    @if (product.stock > 0) {
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                      </svg>
+                      Add to Cart
+                    } @else { Sold out }
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- ── Recently Viewed Products ── -->
+  @if (recentlyViewedProducts().length > 0) {
+    <section class="section bg-white recently-viewed-section">
+      <div class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="section-kicker">Your browsing history</span>
+            <h2 class="section-title">Recently viewed</h2>
+            <p class="section-sub">Pick up where you left off.</p>
+          </div>
+          <button class="clear-recent-button" type="button" (click)="recentlyViewed.clear()">Clear history</button>
+        </div>
+        <div class="products-grid">
+          @for (product of recentlyViewedProducts(); track product.id) {
+            <div class="prod-card">
+              <a [routerLink]="['/product-detail', product.id]" class="prod-image">
+                @if (product.imageUrl) {
+                  <img [src]="imageService.getImageUrl(product.imageUrl)" [alt]="product.name" class="prod-img" />
+                } @else {
+                  <div class="prod-img-placeholder">{{ product.name.charAt(0) }}</div>
+                }
+                @if (product.stock < 5 && product.stock > 0) { <span class="prod-badge badge-hot">Low stock</span> }
+                @if (product.stock === 0) { <span class="prod-badge badge-out">Out of stock</span> }
+                @if (product.hasDiscount) { <span class="prod-badge badge-discount">-{{ product.discountPercentage }}%</span> }
+                <div class="prod-overlay"><span class="prod-overlay-btn">View again</span></div>
+              </a>
+              <div class="prod-info">
+                <a [routerLink]="['/product-detail', product.id]" class="prod-name">{{ product.name }}</a>
+                <p class="prod-desc">{{ product.description }}</p>
+                <div class="prod-bottom">
+                  <div class="prod-price-wrap">
+                    @if (product.hasDiscount) {
+                      <span class="prod-price-final">{{ formatPrice(product.finalPrice ?? product.price) }}</span>
+                      <span class="prod-price-original">{{ formatPrice(product.price) }}</span>
+                    } @else { <span class="prod-price">{{ formatPrice(product.price) }}</span> }
+                  </div>
+                  <a [routerLink]="['/product-detail', product.id]" class="prod-add-btn" [class.disabled]="product.stock === 0">
+                    @if (product.stock > 0) { View details } @else { Sold out }
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Why Choose Us ── -->
+  @if (whyChooseUs().length > 0) {
+    <section class="section bg-white">
+      <div class="section-container">
+        <div class="section-header center-header">
+          <div>
+            <h2 class="section-title">Why choose us</h2>
+            <p class="section-sub">What makes {{ config.appName() }} different</p>
+          </div>
+        </div>
+        <div class="wcu-grid">
+          @for (item of whyChooseUs(); track item.id) {
+            <div class="wcu-card">
+              <div class="wcu-icon">{{ item.icon }}</div>
+              <h3 class="wcu-title">{{ item.title }}</h3>
+              <p class="wcu-desc">{{ item.description }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Animated Stats ── -->
+  <!-- <section class="stats-section">
+    <div class="stats-glow"></div>
+    <div class="section-container">
+      <div class="stats-header">
+        <h2 class="stats-title">The Libas Junior standard</h2>
+        <p class="stats-sub">Designed in Pakistan. Worn everywhere.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon-wrap">
+            <div class="stat-icon">👥</div>
+          </div>
+          <div class="stat-number" data-target="2400" data-suffix="+">0</div>
+          <div class="stat-text">Happy Customers</div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width: 92%"></div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap">
+            <div class="stat-icon">🧴</div>
+          </div>
+          <div class="stat-number" data-target="120" data-suffix="+">0</div>
+            <div class="stat-text">Denim styles</div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width: 78%"></div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap">
+            <div class="stat-icon">⭐</div>
+          </div>
+          <div class="stat-number" data-target="50" data-suffix="+">0</div>
+            <div class="stat-text">Happy reviews</div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width: 85%"></div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon-wrap">
+            <div class="stat-icon">🚚</div>
+          </div>
+          <div class="stat-number" data-target="15" data-suffix="+">0</div>
+            <div class="stat-text">Cities reached</div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width: 65%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ── Testimonials ── -->
+  @if (testimonials().length > 0) {
+    <section class="section bg-light">
+      <div class="section-container">
+        <div class="section-header center-header">
+          <div>
+            <h2 class="section-title">What our customers say</h2>
+            <p class="section-sub">Real reviews from real people</p>
+          </div>
+        </div>
+        <div class="testi-grid">
+          @for (testi of testimonials(); track testi.id) {
+            <div class="testi-card">
+              <div class="testi-stars">{{ getStars(testi.rating) }}</div>
+              <p class="testi-content">"{{ testi.content }}"</p>
+              <div class="testi-author">
+                <div class="testi-avatar">
+                  {{ testi.customerName.charAt(0) }}
+                </div>
+                <div>
+                  <div class="testi-name">{{ testi.customerName }}</div>
+                  <div class="testi-role">{{ testi.customerRole }}</div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- ── Promo Banners Strip ── -->
+  <!-- <section class="promo-strip">
+    <div class="section-container">
+      <div class="promo-grid">
+        <div class="promo-card">
+          <div class="promo-text">
+            <span class="promo-tag">Limited offer</span>
+            <h3>Buy 2 Get 1 Free</h3>
+            <p>Save more when you build your denim rotation</p>
+          </div>
+          <a routerLink="/products" class="promo-btn">Shop now</a>
+        </div>
+        <div class="promo-card">
+          <div class="promo-text">
+            <span class="promo-tag">New arrival</span>
+            <h3>Weekend uniform</h3>
+            <p>Easy fits for wherever the day takes you</p>
+          </div>
+          <a routerLink="/products" class="promo-btn">View kit</a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ── Features Strip ── -->
+  <!-- <section class="features-section">
+    <div class="section-container">
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🚚</div>
+          <div class="feature-title">Free delivery</div>
+          <div class="feature-desc">On orders above Rs. 2,500 anywhere in Pakistan</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-title">Quality denim</div>
+          <div class="feature-desc">Comfortable fabrics, considered construction</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">↩️</div>
+          <div class="feature-title">Easy returns</div>
+          <div class="feature-desc">7-day hassle-free return policy</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Secure payment</div>
+          <div class="feature-desc">Your payment info is always protected</div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+}

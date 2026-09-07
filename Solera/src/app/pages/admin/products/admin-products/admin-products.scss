@@ -1,0 +1,442 @@
+/* ═══════════════════════════════════════════
+   Admin Products — Page Styles
+   ═══════════════════════════════════════════ */
+
+.adm-page {
+  max-width: 1200px;
+}
+
+.adm-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.adm-btn-primary {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Table Enhancements
+   ═══════════════════════════════════════════ */
+
+.adm-card {
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.adm-table {
+  tr {
+    transition: background 0.15s;
+
+    &:hover td {
+      background: #fafaf8;
+    }
+  }
+
+  tbody tr {
+    animation: tableRowIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.03}s;
+      }
+    }
+  }
+}
+
+@keyframes tableRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prod-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prod-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #fdf6ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #d4a574;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
+  }
+}
+
+.prod-cell-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 13px;
+  transition: color 0.15s;
+
+  tr:hover & {
+    color: #d4a574;
+  }
+}
+
+.prod-cell-desc {
+  font-size: 11px;
+  color: #bbb;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amount-cell {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.price-discount-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stock-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  transition: transform 0.15s;
+  display: inline-block;
+
+  &:hover {
+    transform: scale(1.06);
+  }
+}
+
+.toggle-btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Action Buttons
+   ═══════════════════════════════════════════ */
+
+.adm-actions-row {
+  display: flex;
+  gap: 6px;
+}
+
+.adm-edit-btn {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0de;
+  background: #fff;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.15);
+    transform: translateY(-1px);
+  }
+}
+
+.adm-delete-btn {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #dc2626;
+    color: #fff;
+    border-color: #dc2626;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Modal Enhancements
+   ═══════════════════════════════════════════ */
+
+.adm-modal-backdrop {
+  animation: backdropIn 0.2s ease;
+}
+
+.adm-modal {
+  animation: modalSlideIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adm-modal-footer {
+  .adm-btn-primary {
+    min-width: 100px;
+    text-align: center;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Form Inputs Inside Modal
+   ═══════════════════════════════════════════ */
+
+.adm-input {
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: #d4a574;
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+  }
+}
+
+.adm-textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+/* ═══════════════════════════════════════════
+   Alert Transitions
+   ═══════════════════════════════════════════ */
+
+.adm-alert-success,
+.adm-alert-error {
+  animation: alertSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Discount Preview
+   ═══════════════════════════════════════════ */
+
+.discount-preview {
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #991b1b;
+  animation: fadeIn 0.2s ease;
+
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 8px;
+    font-size: 12px;
+  }
+
+  .discount-tag {
+    background: #dc2626;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Image Upload
+   ═══════════════════════════════════════════ */
+
+.image-upload-btn {
+  transition: all 0.2s;
+
+  &:hover:not(.uploading) {
+    background: #e8e8e6;
+    border-color: #d4a574;
+    color: #d4a574;
+  }
+}
+
+.image-preview {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e8e8e6;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: #d4a574;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .adm-page {
+    padding: 64px 16px 40px;
+  }
+
+  .adm-page-header {
+    flex-direction: column;
+    gap: 12px;
+
+    .adm-btn-primary {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  .adm-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-table {
+    font-size: 12px;
+
+    th {
+      padding: 8px 10px;
+      font-size: 10px;
+    }
+
+    td {
+      padding: 10px;
+    }
+  }
+
+  .prod-cell-desc {
+    display: none;
+  }
+
+  .adm-actions-row {
+    flex-direction: column;
+    gap: 4px;
+
+    .adm-edit-btn,
+    .adm-delete-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .adm-modal {
+    margin: 16px;
+    padding: 20px;
+    max-height: 85vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .adm-page-header h1 {
+    font-size: 18px;
+  }
+
+  .prod-thumb {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .stock-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+
+  .toggle-btn {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}

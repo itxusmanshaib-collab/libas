@@ -1,0 +1,363 @@
+<div class="pl-page">
+
+  <!-- ── Sidebar ── -->
+  <aside class="pl-sidebar">
+
+    <!-- Categories -->
+    <div class="filter-section">
+      <div class="filter-title">Categories</div>
+
+      <div class="filter-item"
+           [class.filter-item-active]="selectedCategoryId() === null"
+           (click)="selectCategory(null)">
+        <div class="filter-check-wrap">
+          <div class="filter-check"
+               [class.checked]="selectedCategoryId() === null">
+            @if (selectedCategoryId() === null) { ✓ }
+          </div>
+          <span class="filter-label">All Products</span>
+        </div>
+        <span class="filter-count">
+          {{ allProducts().length }}
+        </span>
+      </div>
+
+      @for (cat of categories(); track cat.id) {
+        <div class="filter-item"
+             [class.filter-item-active]="selectedCategoryId() === cat.id"
+             (click)="selectCategory(cat.id)">
+          <div class="filter-check-wrap">
+            <div class="filter-check"
+                 [class.checked]="selectedCategoryId() === cat.id">
+              @if (selectedCategoryId() === cat.id) { ✓ }
+            </div>
+            <span class="filter-label">{{ cat.name }}</span>
+          </div>
+          <span class="filter-count">{{ cat.productCount }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <!-- Price Range -->
+    <div class="filter-section">
+      <div class="filter-title">Price range</div>
+      <div class="price-inputs">
+        <input
+          type="number"
+          placeholder="Min Rs."
+          class="price-input"
+          #minPriceInput
+          (change)="applyPriceFilter(minPriceInput.value, maxPriceInput.value)"
+        />
+        <input
+          type="number"
+          placeholder="Max Rs."
+          class="price-input"
+          #maxPriceInput
+          (change)="applyPriceFilter(minPriceInput.value, maxPriceInput.value)"
+        />
+      </div>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <!-- Availability -->
+    <div class="filter-section">
+      <div class="filter-title">Availability</div>
+      <div class="filter-item"
+           (click)="inStockOnly.set(true); currentPage.set(1)">
+        <div class="filter-check-wrap">
+          <div class="filter-check" [class.checked]="inStockOnly()">
+            @if (inStockOnly()) { ✓ }
+          </div>
+          <span class="filter-label">In Stock only</span>
+        </div>
+      </div>
+      <div class="filter-item"
+           (click)="inStockOnly.set(false); currentPage.set(1)">
+        <div class="filter-check-wrap">
+          <div class="filter-check" [class.checked]="!inStockOnly()">
+            @if (!inStockOnly()) { ✓ }
+          </div>
+          <span class="filter-label">Show all</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear Filters -->
+    @if (activeFiltersCount() > 0) {
+      <button class="clear-btn" (click)="clearFilters()">
+        Clear all filters ({{ activeFiltersCount() }})
+      </button>
+    }
+
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="pl-main">
+
+    <!-- Top Bar -->
+    <div class="pl-topbar">
+      <div>
+        <h1 class="pl-title">
+          @if (selectedCategoryId()) {
+            {{ getCategoryName(selectedCategoryId()!) }}
+          } @else {
+            All Products
+          }
+        </h1>
+        <p class="pl-count">
+          {{ filteredProducts().length }} products found
+        </p>
+      </div>
+
+      <div class="pl-actions">
+        <!-- Sort -->
+        <app-custom-dropdown
+          [options]="sortOptions"
+          [modelValue]="sortBy()"
+          (modelValueChange)="onSortChange($event)"
+          placeholder="Sort: Featured"
+          size="sm">
+        </app-custom-dropdown>
+
+        <!-- View Toggle -->
+        <div class="view-toggle">
+          <button
+            class="view-btn"
+            [class.view-active]="viewMode() === 'grid'"
+            (click)="setView('grid')"
+            aria-label="Grid view">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+            </svg>
+          </button>
+          <button
+            class="view-btn"
+            [class.view-active]="viewMode() === 'list'"
+            (click)="setView('list')"
+            aria-label="List view">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success / Error Messages -->
+    @if (successMessage()) {
+      <div class="alert alert-success">{{ successMessage() }}</div>
+    }
+    @if (errorMessage()) {
+      <div class="alert alert-error">{{ errorMessage() }}</div>
+    }
+
+    <!-- Loading -->
+    @if (isLoading()) {
+      <div class="loading-wrap">
+        <div class="loading-spinner"></div>
+        <p>Loading products...</p>
+      </div>
+    }
+
+    <!-- Products -->
+    @if (!isLoading()) {
+
+      @if (filteredProducts().length === 0) {
+        <!-- Empty State -->
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <h3>No products found</h3>
+          <p>Try changing your filters or search term</p>
+          <button class="btn-clear" (click)="clearFilters()">
+            Clear filters
+          </button>
+        </div>
+      } @else {
+
+        <!-- Grid View -->
+        @if (viewMode() === 'grid') {
+          <div class="products-grid">
+            @for (product of paginatedProducts(); track product.id) {
+              <div class="prod-card">
+
+                <!-- Image -->
+                <a [routerLink]="['/product-detail', product.id]"
+                   class="prod-image-wrap">
+                  @if (product.imageUrl) {
+                    <img [src]="imageService.getImageUrl(product.imageUrl)"
+                         [alt]="product.name"
+                         class="prod-img" />
+                  } @else {
+                    <div class="prod-img-ph">
+                      {{ product.name.charAt(0) }}
+                    </div>
+                  }
+
+                  <!-- Discount Badge -->
+                  @if (product.hasDiscount) {
+                    <span class="prod-badge badge-discount">-{{ product.discountPercentage }}%</span>
+                  }
+
+                  <!-- Stock Badges -->
+                  @if (product.stock === 0) {
+                    <span class="prod-badge badge-out">Out of stock</span>
+                  } @else if (product.stock < 5) {
+                    <span class="prod-badge badge-low">Low stock</span>
+                  }
+                </a>
+
+                <button class="wishlist-card-button" type="button"
+                        [class.saved]="wishlist.has(product.id)"
+                        (click)="toggleWishlist(product, $event)"
+                        [attr.aria-label]="(wishlist.has(product.id) ? 'Remove ' : 'Save ') + product.name + ' from wishlist'">
+                  {{ wishlist.has(product.id) ? '♥' : '♡' }}
+                </button>
+
+                <!-- Info -->
+                <div class="prod-info">
+                  <div class="prod-cat">
+                    {{ getCategoryName(product.categoryId) }}
+                  </div>
+                  <a [routerLink]="['/product-detail', product.id]"
+                     class="prod-name">
+                    {{ product.name }}
+                  </a>
+                  <p class="prod-desc">{{ product.description }}</p>
+                  <div class="prod-footer">
+                    <div class="prod-price-wrap">
+                      @if (product.hasDiscount) {
+                        <span class="prod-price-final">{{ formatPrice(product.finalPrice ?? product.price) }}</span>
+                        <span class="prod-price-original">{{ formatPrice(product.price) }}</span>
+                      } @else {
+                        <span class="prod-price">{{ formatPrice(product.price) }}</span>
+                      }
+                    </div>
+                    <div class="card-cart-control" [class.loading]="addingToCart() === product.id">
+                      <div class="quantity-stepper" aria-label="Select quantity">
+                        <button type="button" class="quantity-button" (click)="changeQuantity(product, -1, $event)" [disabled]="product.stock === 0 || quantityFor(product) === 1" aria-label="Decrease quantity">−</button>
+                        <span class="quantity-value">{{ quantityFor(product) }}</span>
+                        <button type="button" class="quantity-button" (click)="changeQuantity(product, 1, $event)" [disabled]="product.stock === 0 || quantityFor(product) >= product.stock" aria-label="Increase quantity">+</button>
+                      </div>
+                      <button type="button" class="card-add-button" (click)="addToCart(product, $event)" [disabled]="product.stock === 0 || addingToCart() === product.id" [attr.aria-label]="'Add ' + quantityFor(product) + ' ' + product.name + ' to cart'">
+                        @if (addingToCart() === product.id) { <span class="btn-spinner"></span> } @else {
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> Add
+                        }
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- List View -->
+        @if (viewMode() === 'list') {
+          <div class="products-list">
+            @for (product of paginatedProducts(); track product.id) {
+              <div class="list-card">
+                <a [routerLink]="['/product-detail', product.id]"
+                   class="list-image">
+                  @if (product.imageUrl) {
+                    <img [src]="imageService.getImageUrl(product.imageUrl)" [alt]="product.name"
+                         class="list-img" />
+                  } @else {
+                    <div class="list-img-ph">{{ product.name.charAt(0) }}</div>
+                  }
+                </a>
+                <div class="list-info">
+                  <div class="prod-cat">
+                    {{ getCategoryName(product.categoryId) }}
+                  </div>
+                  <a [routerLink]="['/product-detail', product.id]"
+                     class="list-name">
+                    {{ product.name }}
+                  </a>
+                  <p class="list-desc">{{ product.description }}</p>
+                  @if (product.stock < 5 && product.stock > 0) {
+                    <span class="stock-warn">
+                      Only {{ product.stock }} left
+                    </span>
+                  }
+                </div>
+                <div class="list-actions">
+                  <div class="prod-price-wrap">
+                    @if (product.hasDiscount) {
+                      <span class="prod-price-final">{{ formatPrice(product.finalPrice ?? product.price) }}</span>
+                      <span class="prod-price-original">{{ formatPrice(product.price) }}</span>
+                    } @else {
+                      <span class="prod-price">{{ formatPrice(product.price) }}</span>
+                    }
+                  </div>
+                  <div class="list-cart-control">
+                    <div class="quantity-stepper" aria-label="Select quantity">
+                      <button type="button" class="quantity-button" (click)="changeQuantity(product, -1, $event)" [disabled]="product.stock === 0 || quantityFor(product) === 1" aria-label="Decrease quantity">−</button>
+                      <span class="quantity-value">{{ quantityFor(product) }}</span>
+                      <button type="button" class="quantity-button" (click)="changeQuantity(product, 1, $event)" [disabled]="product.stock === 0 || quantityFor(product) >= product.stock" aria-label="Increase quantity">+</button>
+                    </div>
+                    <button type="button" class="list-cart-btn" [disabled]="product.stock === 0 || addingToCart() === product.id" (click)="addToCart(product, $event)">{{ product.stock === 0 ? 'Out of stock' : 'Add' }}</button>
+                  </div>
+                  <a [routerLink]="['/product-detail', product.id]"
+                     class="list-view-btn">
+                    View details
+                  </a>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Pagination -->
+        @if (totalPages() > 1) {
+          <div class="pagination">
+            <button
+              class="page-btn"
+              [disabled]="currentPage() === 1"
+              (click)="goToPage(currentPage() - 1)"
+              aria-label="Previous page">
+              ‹
+            </button>
+
+            @for (page of pages(); track page) {
+              @if (page === 1 || page === totalPages() ||
+                   (page >= currentPage() - 1 && page <= currentPage() + 1)) {
+                <button
+                  class="page-btn"
+                  [class.page-active]="page === currentPage()"
+                  (click)="goToPage(page)"
+                  [attr.aria-label]="'Page ' + page"
+                  [attr.aria-current]="page === currentPage() ? 'page' : null">
+                  {{ page }}
+                </button>
+              } @else if (page === currentPage() - 2 ||
+                          page === currentPage() + 2) {
+                <span class="page-dots">...</span>
+              }
+            }
+
+            <button
+              class="page-btn"
+              [disabled]="currentPage() === totalPages()"
+              (click)="goToPage(currentPage() + 1)"
+              aria-label="Next page">
+              ›
+            </button>
+          </div>
+        }
+
+      }
+    }
+
+  </main>
+</div>

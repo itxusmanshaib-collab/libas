@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════
+   Admin Contact Us — Page Styles
+   ═══════════════════════════════════════════ */
+
+.admin-page {
+  max-width: 1200px;
+}
+
+.section-container {
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .section-tag {
+      color: var(--primary-color);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 2rem;
+    }
+  }
+
+  .messages-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    th,
+    td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #555;
+      font-size: 0.875rem;
+    }
+
+    tr {
+      transition: background 0.2s;
+
+      &:hover {
+        background: #fafafa;
+      }
+    }
+
+    .status-new {
+      color: #dc3545;
+      font-weight: 500;
+    }
+
+    .status-read {
+      color: #6c757d;
+      font-weight: 500;
+    }
+  }
+
+  .empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #666;
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .loading-state {
+    padding: 3rem 2rem;
+    text-align: center;
+    color: #666;
+  }
+}

@@ -1,0 +1,360 @@
+/* ══════════════════════════════════════════════════════
+   Solera Footer — Premium Skincare Ecommerce
+   Dark luxury (#1a1a1a) · Gold accent (#d4a574)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Keyframes ── */
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Site Footer ── */
+
+.site-footer {
+  background: #1a1a1a;
+  color: #999;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+}
+
+/* ── Footer Top ── */
+
+.footer-top {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-top .footer-container {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+}
+
+/* ── Brand Column ── */
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  transition: color 0.25s ease;
+}
+
+.footer-tagline {
+  font-size: 11px;
+  color: #d4a574;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: #777;
+  margin-bottom: 24px;
+  max-width: 320px;
+}
+
+.newsletter-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ccc;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.newsletter-form {
+  display: flex;
+  max-width: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  input {
+    flex: 1;
+    background: #242424;
+    border: none;
+    padding: 11px 14px;
+    font-size: 13px;
+    color: #fff;
+    transition:
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+
+    &::placeholder {
+      color: #555;
+    }
+
+    &:focus {
+      outline: none;
+      background: #2a2a2a;
+      box-shadow: inset 0 0 0 1px rgba(212, 165, 116, 0.3);
+    }
+  }
+
+  &:focus-within {
+    border-color: rgba(212, 165, 116, 0.45);
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.08);
+  }
+
+  button {
+    background: #d4a574;
+    color: #1a1a1a;
+    border: none;
+    padding: 0 20px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: #c49464;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+.newsletter-msg {
+  font-size: 12px;
+  color: #e08080;
+  margin-top: 8px;
+
+  &.success {
+    color: #7fd99f;
+  }
+}
+
+/* ── Link Columns ── */
+
+.footer-col {
+  animation: revealUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  &:nth-child(2) { animation-delay: 0.05s; }
+  &:nth-child(3) { animation-delay: 0.1s; }
+  &:nth-child(4) { animation-delay: 0.15s; }
+
+  h4 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 24px;
+      height: 1.5px;
+      background: #d4a574;
+      border-radius: 2px;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  &:hover h4::after {
+    width: 40px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  a {
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #d4a574;
+      transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &:hover {
+      color: #d4a574;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* ── Contact List ── */
+
+.contact-list {
+  margin-bottom: 22px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.5;
+  }
+}
+
+.contact-icon {
+  width: 15px;
+  height: 15px;
+  color: #d4a574;
+  flex-shrink: 0;
+}
+
+/* ── Social Icons ── */
+
+.social-row {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #242424;
+  border: 0.5px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover {
+    background: #d4a574;
+    border-color: #d4a574;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow:
+      0 4px 16px rgba(212, 165, 116, 0.3),
+      0 2px 6px rgba(0, 0, 0, 0.15);
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* ── Footer Bottom ── */
+
+.footer-bottom {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 165, 116, 0.3),
+      transparent
+    );
+  }
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  p {
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 0.2px;
+  }
+}
+
+.payment-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #555;
+
+  .dot {
+    color: #333;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

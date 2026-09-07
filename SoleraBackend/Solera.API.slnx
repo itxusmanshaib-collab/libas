@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Solera.API/Solera.API.csproj" />
+  <Project Path="Solera.Application/Solera.Application.csproj" />
+  <Project Path="Solera.Domain/Solera.Domain.csproj" />
+  <Project Path="Solera.Infrastructure/Solera.Infrastructure.csproj" />
+</Solution>

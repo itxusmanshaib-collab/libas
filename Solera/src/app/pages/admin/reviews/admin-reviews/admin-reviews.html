@@ -1,0 +1,52 @@
+<div class="adm-page">
+  <div class="adm-page-header">
+    <div>
+      <h1 class="adm-page-title">Pending reviews</h1>
+      <p class="adm-page-sub">
+        {{ reviews().length }} reviews waiting for approval
+      </p>
+    </div>
+  </div>
+
+  @if (successMessage()) {
+    <div class="adm-alert-success">{{ successMessage() }}</div>
+  }
+
+  @if (reviews().length === 0 && !isLoading()) {
+    <div class="adm-empty">
+      <div class="adm-empty-icon">⭐</div>
+      <h3>No pending reviews</h3>
+      <p>All reviews have been reviewed</p>
+    </div>
+  }
+
+  <div class="review-cards">
+    @for (review of reviews(); track review.id) {
+      <div class="adm-review-card">
+        <div class="review-card-header">
+          <div class="review-card-info">
+            <div class="review-product">{{ review.productName }}</div>
+            <div class="review-by">by {{ review.userName }}</div>
+            <div class="review-date">
+              {{ review.createdAt | date:'dd MMM yyyy' }}
+            </div>
+          </div>
+          <div class="review-stars-adm">
+            {{ getStars(review.rating) }}
+          </div>
+        </div>
+        <p class="review-comment">{{ review.comment }}</p>
+        <div class="review-card-actions">
+          <button class="adm-approve-btn"
+                  (click)="approveReview(review.id)">
+            ✓ Approve
+          </button>
+          <button class="adm-delete-btn"
+                  (click)="deleteReview(review.id)">
+            Delete
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

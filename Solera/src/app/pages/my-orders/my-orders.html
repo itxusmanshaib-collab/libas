@@ -1,0 +1,66 @@
+@if (isLoading()) {
+  <div class="page-loading">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+}
+
+@if (!isLoading()) {
+<div class="orders-page">
+  <div class="orders-container">
+
+    <div class="orders-header">
+      <h1>My Orders</h1>
+      <a routerLink="/profile" class="back-link">← Back to Profile</a>
+    </div>
+
+    <div class="filter-tabs">
+      @for (f of filters; track f) {
+        <button class="filter-btn" [class.active]="activeFilter() === f" (click)="setFilter(f)">
+          {{ f }}
+        </button>
+      }
+    </div>
+
+    @if (errorMessage()) {
+      <div class="msg-error">{{ errorMessage() }}</div>
+    }
+
+    @if (filteredOrders().length > 0) {
+      <div class="orders-list">
+        @for (order of filteredOrders(); track order.id) {
+          <a [routerLink]="['/order-detail', order.id]" class="order-card">
+            <div class="order-card-left">
+              <div class="order-thumbs">
+                @for (item of order.items.slice(0, 3); track item.id) {
+                  @if (item.productImage) {
+                    <img [src]="getImageUrl(item.productImage)" [alt]="item.productName" class="order-thumb" />
+                  } @else {
+                    <div class="order-thumb order-thumb-placeholder">{{ item.productName.charAt(0) }}</div>
+                  }
+                }
+                @if (order.items.length > 3) {
+                  <div class="order-thumb order-thumb-more">+{{ order.items.length - 3 }}</div>
+                }
+              </div>
+              <div class="order-info">
+                <div class="order-id">Order #{{ order.id }}</div>
+                <div class="order-date">{{ formatDate(order.orderDate) }} · {{ order.items.length }} item(s)</div>
+              </div>
+            </div>
+            <div class="order-card-right">
+              <span class="status-badge" [class]="statusClass(order.status)">{{ order.status }}</span>
+              <div class="order-total">{{ formatPrice(order.totalAmount) }}</div>
+            </div>
+          </a>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <p>No orders found</p>
+        <a routerLink="/products" class="btn-gold-sm">Start Shopping</a>
+      </div>
+    }
+  </div>
+</div>
+}

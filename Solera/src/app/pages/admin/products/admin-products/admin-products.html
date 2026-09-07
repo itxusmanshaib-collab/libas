@@ -1,0 +1,254 @@
+<div class="adm-page">
+  <div class="adm-page-header">
+    <div>
+      <h1 class="adm-page-title">Products</h1>
+      <p class="adm-page-sub">
+        {{ products().length }} total products
+      </p>
+    </div>
+    <button class="adm-btn-primary" (click)="openAddForm()">
+      + Add Product
+    </button>
+  </div>
+
+  @if (successMessage()) {
+    <div class="adm-alert-success">{{ successMessage() }}</div>
+  }
+
+  <!-- Add/Edit Form Modal -->
+  @if (showForm()) {
+    <div class="adm-modal-backdrop" (click)="closeForm()">
+      <div class="adm-modal" (click)="$event.stopPropagation()">
+        <div class="adm-modal-header">
+          <h2 class="adm-modal-title">
+            {{ editingProduct() ? 'Edit Product' : 'Add New Product' }}
+          </h2>
+          <button class="adm-modal-close" (click)="closeForm()">✕</button>
+        </div>
+
+        @if (errorMessage()) {
+          <div class="adm-alert-error">{{ errorMessage() }}</div>
+        }
+
+        <div class="adm-form-grid">
+          <div class="adm-form-group adm-col-2">
+            <label class="adm-label">Product Name *</label>
+                 <input type="text" [(ngModel)]="form.name" (ngModelChange)="clearFieldError('name')"
+                   class="adm-input" placeholder="Hydra Boost Cream" />
+                 @if (fieldError('name')) { <div class="field-error">{{ fieldError('name') }}</div> }
+          </div>
+          <div class="adm-form-group adm-col-2 variant-editor">
+            <label class="adm-label">Product gallery</label>
+            <input type="text" [(ngModel)]="form.galleryImages" (ngModelChange)="clearFieldError('images')" class="adm-input" placeholder="Optional image URLs separated by commas" />
+            <small>Upload multiple images below, or paste image URLs separated by commas.</small>
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Available colors</label>
+            <input type="text" [(ngModel)]="form.availableColors" class="adm-input" placeholder="Black, Blue, Stone" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Available sizes</label>
+            <input type="text" [(ngModel)]="form.availableSizes" class="adm-input" placeholder="30, 32, 34, 36" />
+          </div>
+          <div class="adm-form-group adm-col-2">
+            <label class="adm-label">Description</label>
+            <textarea [(ngModel)]="form.description"
+                      class="adm-input adm-textarea"
+                      rows="3"
+                      placeholder="Product description..."></textarea>
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Price (Rs.) *</label>
+                 <input type="number" [(ngModel)]="form.price" (ngModelChange)="clearFieldError('price')"
+                   class="adm-input" placeholder="2499" />
+                 @if (fieldError('price')) { <div class="field-error">{{ fieldError('price') }}</div> }
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Stock *</label>
+                 <input type="number" [(ngModel)]="form.stock" (ngModelChange)="clearFieldError('stock')"
+                   class="adm-input" placeholder="50" />
+                 @if (fieldError('stock')) { <div class="field-error">{{ fieldError('stock') }}</div> }
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Category *</label>
+            <app-custom-dropdown
+              [options]="categoryOptions"
+              [modelValue]="form.categoryId"
+              (modelValueChange)="form.categoryId = $event; clearFieldError('categoryId')"
+              placeholder="Select category">
+            </app-custom-dropdown>
+            @if (fieldError('categoryId')) { <div class="field-error">{{ fieldError('categoryId') }}</div> }
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Status</label>
+            <app-custom-dropdown
+              [options]="statusOptions"
+              [modelValue]="form.isActive.toString()"
+              (modelValueChange)="form.isActive = $event === 'true'"
+              placeholder="Status">
+            </app-custom-dropdown>
+          </div>
+
+          <!-- Discount Section -->
+          <div class="adm-form-group">
+            <label class="adm-label">Discount %</label>
+            <input type="number" [(ngModel)]="form.discountPercentage"
+                   class="adm-input" placeholder="10" min="0" max="100" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Discount Amount (Rs.)</label>
+            <input type="number" [(ngModel)]="form.discountAmount"
+                   class="adm-input" placeholder="0" min="0" />
+          </div>
+          @if (form.discountPercentage > 0 && form.price > 0) {
+            <div class="adm-form-group adm-col-2">
+              <div class="discount-preview">
+                Preview: <strong>Rs. {{ (form.price - discountPreview).toLocaleString() }}</strong>
+                <span class="original-price">Rs. {{ form.price.toLocaleString() }}</span>
+                <span class="discount-tag">-{{ form.discountPercentage }}%</span>
+              </div>
+            </div>
+          }
+
+          <!-- Image Upload -->
+          <div class="adm-form-group adm-col-2">
+            <label class="adm-label">Product Image</label>
+            <div class="image-upload-row">
+              <label class="image-upload-btn" [class.uploading]="uploadingImage()">
+                @if (uploadingImage()) {
+                  Uploading...
+                } @else {
+                  Choose Image
+                }
+                <input type="file" accept="image/*" multiple (change)="uploadImages($event)" hidden />
+              </label>
+              @if (form.imageUrl) {
+                <div class="image-preview">
+                  <img [src]="imageService.getImageUrl(form.imageUrl)" alt="Preview" />
+                </div>
+              }
+              @for (image of toList(form.galleryImages); track image) {
+                <div class="image-preview gallery-preview">
+                  <img [src]="imageService.getImageUrl(image)" alt="Gallery preview" />
+                  <button type="button" (click)="removeGalleryImage(image)" aria-label="Remove gallery image">×</button>
+                </div>
+              }
+            </div>
+            <input type="text" [(ngModel)]="form.imageUrl"
+                   class="adm-input"
+                   placeholder="Primary image URL (optional)"
+                   style="margin-top: 8px" />
+                 @if (fieldError('images')) { <div class="field-error">{{ fieldError('images') }}</div> }
+          </div>
+        </div>
+
+        <div class="adm-modal-footer">
+          <button class="adm-btn-outline" (click)="closeForm()">
+            Cancel
+          </button>
+          <button
+            class="adm-btn-primary"
+            (click)="saveProduct()"
+            [disabled]="isSubmitting()">
+            @if (isSubmitting()) { Saving... }
+            @else { {{ editingProduct() ? 'Update' : 'Add Product' }} }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Products Table -->
+  <div class="adm-card">
+    <div class="adm-table-wrap">
+      <table class="adm-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Images</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (isLoading()) {
+            <tr>
+              <td colspan="7" class="adm-table-loading">
+                Loading products...
+              </td>
+            </tr>
+          }
+          @for (product of products(); track product.id) {
+            <tr>
+              <td>
+                <div class="prod-cell">
+                  <div class="prod-thumb">
+                    @if (product.imageUrl) {
+                      <img [src]="imageService.getImageUrl(product.imageUrl)"
+                           [alt]="product.name" />
+                    } @else {
+                      {{ product.name.charAt(0) }}
+                    }
+                  </div>
+                  <div class="prod-cell-info">
+                    <div class="prod-cell-name">{{ product.name }}</div>
+                    <div class="prod-cell-desc">
+                      {{ product.description | slice:0:40 }}...
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="image-count-badge">{{ imageCount(product) }} {{ imageCount(product) === 1 ? 'image' : 'images' }}</span></td>
+              <td class="date-cell">
+                {{ getCategoryName(product.categoryId) }}
+              </td>
+              <td class="amount-cell">
+                @if (product.hasDiscount) {
+                  <div class="price-discount-cell">
+                    <span class="price-final">{{ formatPrice(product.finalPrice ?? product.price) }}</span>
+                    <span class="price-original">{{ formatPrice(product.price) }}</span>
+                  </div>
+                } @else {
+                  {{ formatPrice(product.price) }}
+                }
+              </td>
+              <td>
+                <span [class]="product.stock === 0
+                  ? 'stock-badge stock-out'
+                  : product.stock < 5
+                    ? 'stock-badge stock-low'
+                    : 'stock-badge stock-ok'">
+                  {{ product.stock }}
+                </span>
+              </td>
+              <td>
+                <button
+                  class="toggle-btn"
+                  [class.toggle-active]="product.isActive"
+                  [class.toggle-inactive]="!product.isActive"
+                  (click)="toggleProduct(product)">
+                  {{ product.isActive ? 'Active' : 'Inactive' }}
+                </button>
+              </td>
+              <td>
+                <div class="adm-actions-row">
+                  <button class="adm-edit-btn"
+                          (click)="openEditForm(product)">
+                    Edit
+                  </button>
+                  <button class="adm-delete-btn"
+                          (click)="deleteProduct(product)">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

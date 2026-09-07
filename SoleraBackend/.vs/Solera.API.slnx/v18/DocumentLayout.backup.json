@@ -1,0 +1,809 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\SoleraBackend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\migrations\\20260902193043_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260902193043_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\bannerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\bannerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\helpers\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\helpers\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\helpers\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\helpers\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\interfaces\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\interfaces\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\migrations\\20260712175117_addbannersreviewsnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260712175117_addbannersreviewsnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\bannerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\bannerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\banner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\banner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\profiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\profiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\cartdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\cartdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\migrations\\20260712132854_addcartsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260712132854_addcartsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\migrations\\20260712131717_addcategoryfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260712131717_addcategoryfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\migrations\\20260712130655_adddeliveryaddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260712130655_adddeliveryaddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\dtos\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\dtos\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\project\\solerabackend\\solera.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|d:\\project\\solerabackend\\solera.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F298A5-6550-95DA-2ED0-0B24DC0E79D7}|Solera.Domain\\Solera.Domain.csproj|solutionrelative:solera.domain\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\project\\solerabackend\\solera.api\\solera.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\solera.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContactUsController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ContactUsController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\ContactUsController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ContactUsController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\ContactUsController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAADwvyUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-06T11:38:21.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\NotificationsController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAWwCAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:55:32.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GlobalExceptionHandler.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Helpers\\GlobalExceptionHandler.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Helpers\\GlobalExceptionHandler.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Helpers\\GlobalExceptionHandler.cs",
+              "RelativeToolTip": "Solera.API\\Helpers\\GlobalExceptionHandler.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAWwEAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T16:27:47.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SoleraDbContext.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Data\\SoleraDbContext.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Data\\SoleraDbContext.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Data\\SoleraDbContext.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Data\\SoleraDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T07:22:25.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Program.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Program.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Program.cs",
+              "RelativeToolTip": "Solera.API\\Program.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAvwFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-29T09:45:32.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Solera.API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Solera.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-03T13:16:33.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Solera.API\\appsettings.Development.json",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\appsettings.Development.json",
+              "RelativeToolTip": "Solera.API\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-29T09:46:09.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BannersController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\BannersController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\BannersController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\BannersController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\BannersController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAswB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:53:24.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20260902193043_UpdateDatabase.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-02T19:30:43.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAWwBYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T06:31:15.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Solera.API\\appsettings.json",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\appsettings.json",
+              "RelativeToolTip": "Solera.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-12T11:53:24.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\CategoriesController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAqwP8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:18:06.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\CartController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAxwCMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:31:01.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\ProfileController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAAIBAAAAJAAAAMAiwBIBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:36:53.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Helpers\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Helpers\\ApiResponse.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Helpers\\ApiResponse.cs",
+              "RelativeToolTip": "Solera.API\\Helpers\\ApiResponse.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAqwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T16:16:09.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAMUAAAAwMzMzM5MwwNwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T12:32:41.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAFkAAABAy8zMzMwowLsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T10:02:25.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\ReviewsController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAEEAAAAAZjMzMzMXwM0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:54:32.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Product.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Product.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAwPRAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T18:51:04.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T06:34:44.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Interfaces\\IProductRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IProductRepository.cs",
+              "RelativeToolTip": "Solera.Domain\\Interfaces\\IProductRepository.cs",
+              "ViewState": "AgIAAAMAAAAwMzMzMzMLwAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T07:31:17.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADwAAABAmZmZmdkqwC8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T12:14:50.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Notification.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Notification.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:48:59.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20260712175117_AddBannersReviewsNotifications.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712175117_AddBannersReviewsNotifications.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260712175117_AddBannersReviewsNotifications.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712175117_AddBannersReviewsNotifications.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Migrations\\20260712175117_AddBannersReviewsNotifications.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:51:18.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AuthDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\AuthDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\AuthDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\AuthDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\AuthDTOs.cs",
+              "ViewState": "AgIAAAsAAADAlpmZmZkZwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T20:15:30.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BannerDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\BannerDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\BannerDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\BannerDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\BannerDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:52:02.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Review.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Review.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Review.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Review.cs",
+              "ViewState": "AgIAAAUAAABwmZmZmZkxwBUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:47:37.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Banner.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Banner.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Banner.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Banner.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Banner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T17:45:44.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ProfileDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\ProfileDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\ProfileDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\ProfileDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\ProfileDTOs.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA0wCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:36:11.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CartDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\CartDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\CartDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\CartDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\CartDTOs.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwDIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:30:13.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20260712132854_AddCartSystem.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712132854_AddCartSystem.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260712132854_AddCartSystem.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712132854_AddCartSystem.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Migrations\\20260712132854_AddCartSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:28:55.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\CartItem.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\CartItem.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\CartItem.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:26:31.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Cart.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Cart.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Cart.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Cart.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAgwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:24:37.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20260712131717_AddCategoryFields.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712131717_AddCategoryFields.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260712131717_AddCategoryFields.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712131717_AddCategoryFields.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Migrations\\20260712131717_AddCategoryFields.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:17:18.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CategoryDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\CategoryDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\CategoryDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\CategoryDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\CategoryDTOs.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA1wB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:14:53.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Solera.API\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAA0AAAAAmpmZmVk6wA0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:08:00.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "20260712130655_AddDeliveryAddress.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712130655_AddDeliveryAddress.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260712130655_AddDeliveryAddress.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260712130655_AddDeliveryAddress.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Migrations\\20260712130655_AddDeliveryAddress.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:06:55.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Category.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Category.cs",
+              "ViewState": "AgIAAAUAAAAwmZmZmZktwAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T18:40:49.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\Order.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAAAYAAAAAzMzMzMwUwA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:04:57.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "OrderDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\OrderDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\OrderDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\OrderDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\OrderDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:04:15.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Solera.API\\Services\\TokenService.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Services\\TokenService.cs",
+              "RelativeToolTip": "Solera.API\\Services\\TokenService.cs",
+              "ViewState": "AgIAACMAAAAAgGZmZmbyvy4AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T11:52:26.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "AdminDTOs.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\AdminDTOs.cs",
+              "RelativeDocumentMoniker": "Solera.API\\DTOs\\AdminDTOs.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\DTOs\\AdminDTOs.cs",
+              "RelativeToolTip": "Solera.API\\DTOs\\AdminDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T12:40:17.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\AppUser.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\AppUser.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\AppUser.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T18:40:40.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Interfaces\\IGenericRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IGenericRepository.cs",
+              "RelativeToolTip": "Solera.Domain\\Interfaces\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T07:30:34.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAAAoAAAAAxMzMzMwFwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T06:32:46.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\OrderItem.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Entities\\OrderItem.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Entities\\OrderItem.cs",
+              "RelativeToolTip": "Solera.Domain\\Entities\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T18:40:37.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "Solera.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T07:24:43.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "Solera.Domain\\Interfaces\\IOrderRepository.cs",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.Domain\\Interfaces\\IOrderRepository.cs",
+              "RelativeToolTip": "Solera.Domain\\Interfaces\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T07:31:07.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Solera.API.csproj",
+              "DocumentMoniker": "D:\\Project\\SoleraBackend\\Solera.API\\Solera.API.csproj",
+              "RelativeDocumentMoniker": "Solera.API\\Solera.API.csproj",
+              "ToolTip": "D:\\Project\\SoleraBackend\\Solera.API\\Solera.API.csproj",
+              "RelativeToolTip": "Solera.API\\Solera.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-03T11:48:32.344Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

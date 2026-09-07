@@ -1,0 +1,340 @@
+<!-- Loading -->
+@if (isLoading()) {
+  <div class="pd-loading">
+    <div class="loading-spinner"></div>
+    <p>Loading product...</p>
+  </div>
+}
+
+@if (!isLoading() && product()) {
+  <div class="pd-page">
+
+    <!-- Breadcrumb -->
+    <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a routerLink="/products">Products</a>
+      <span aria-hidden="true">›</span>
+      <span>{{ product()!.name }}</span>
+    </nav>
+
+    <!-- Product Section -->
+    <div class="pd-layout">
+
+      <!-- Left — Images -->
+      <div class="pd-images">
+        <div class="pd-main-img">
+          @if (product()!.imageUrl) {
+            <img [src]="imageService.getImageUrl(selectedImage() || product()!.imageUrl)"
+                 [alt]="product()!.name"
+                 class="pd-img" />
+          } @else {
+            <div class="pd-img-ph">
+              {{ product()!.name.charAt(0) }}
+            </div>
+          }
+
+          <!-- Stock Badge -->
+          @if (product()!.stock === 0) {
+            <div class="pd-stock-badge out">Out of stock</div>
+          } @else if (product()!.stock < 5) {
+            <div class="pd-stock-badge low">
+              Only {{ product()!.stock }} left
+            </div>
+          }
+          <button class="pd-wishlist-button" type="button" (click)="toggleWishlist()"
+                  [class.saved]="wishlist.has(product()!.id)"
+                  [attr.aria-label]="wishlist.has(product()!.id) ? 'Remove from wishlist' : 'Add to wishlist'">
+            {{ wishlist.has(product()!.id) ? '♥' : '♡' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Right — Info -->
+      <div class="pd-info">
+
+        <!-- Category -->
+        <a routerLink="/products" class="pd-cat">
+          {{ getCategoryName() }}
+        </a>
+
+        <!-- Name -->
+        <h1 class="pd-name">{{ product()!.name }}</h1>
+
+        <!-- Rating -->
+        @if (reviewsData() && reviewsData()!.totalReviews > 0) {
+          <div class="pd-rating">
+            <span class="pd-stars">
+              {{ getStars(reviewsData()!.averageRating) }}
+            </span>
+            <span class="pd-rating-num">
+              {{ reviewsData()!.averageRating | number:'1.1-1' }}
+            </span>
+            <span class="pd-review-count">
+              ({{ reviewsData()!.totalReviews }} reviews)
+            </span>
+          </div>
+        }
+
+        <!-- Price -->
+        <div class="pd-price-row">
+          @if (product()!.hasDiscount) {
+            <span class="pd-price-final">{{ formatPrice(product()!.finalPrice ?? product()!.price) }}</span>
+            <span class="pd-price-original">{{ formatPrice(product()!.price) }}</span>
+            <span class="pd-discount-badge">-{{ product()!.discountPercentage }}%</span>
+          } @else {
+            <span class="pd-price">{{ formatPrice(product()!.price) }}</span>
+          }
+        </div>
+
+        <!-- Stock Info -->
+        <div class="pd-stock">
+          @if (product()!.stock > 0) {
+            <span class="stock-dot-green"></span>
+            In stock
+            @if (product()!.stock < 10) {
+              — only {{ product()!.stock }} left
+            }
+          } @else {
+            <span class="stock-dot-red"></span>
+            Out of stock
+          }
+        </div>
+
+        <!-- Description -->
+        <p class="pd-desc">{{ product()!.description }}</p>
+
+        @if (galleryImages().length > 1) {
+          <div class="pd-thumbnails">
+            @for (image of galleryImages(); track image) {
+              <button type="button" class="pd-thumbnail" [class.active]="selectedImage() === image" (click)="selectedImage.set(image)">
+                <img [src]="imageService.getImageUrl(image)" [alt]="product()!.name" />
+              </button>
+            }
+          </div>
+        }
+
+        @if (variantOptions(product()!.availableColors).length > 0) {
+          <div class="pd-option-group">
+            <div class="pd-option-label">Color <strong>{{ selectedColor() }}</strong></div>
+            <div class="pd-color-options">
+              @for (color of variantOptions(product()!.availableColors); track color) {
+                <button type="button" class="pd-color-option" [class.selected]="selectedColor() === color" (click)="selectedColor.set(color)">{{ color }}</button>
+              }
+            </div>
+          </div>
+        }
+        @if (variantOptions(product()!.availableSizes).length > 0) {
+          <div class="pd-option-group">
+            <div class="pd-option-label">Size <strong>{{ selectedSize() }}</strong></div>
+            <div class="pd-size-options">
+              @for (size of variantOptions(product()!.availableSizes); track size) {
+                <button type="button" class="pd-size-option" [class.selected]="selectedSize() === size" (click)="selectedSize.set(size)">{{ size }}</button>
+              }
+            </div>
+          </div>
+        }
+
+        <div class="pd-divider"></div>
+
+        <!-- Success / Error -->
+        @if (successMessage()) {
+          <div class="pd-alert pd-alert-success">
+            {{ successMessage() }}
+          </div>
+        }
+        @if (errorMessage()) {
+          <div class="pd-alert pd-alert-error">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <!-- Quantity -->
+        @if (product()!.stock > 0) {
+          <div class="pd-qty-label">Quantity</div>
+          <div class="pd-qty-row">
+            <button class="pd-qty-btn"
+                    (click)="decreaseQty()"
+                    [disabled]="quantity() === 1"
+                    aria-label="Decrease quantity">−</button>
+            <span class="pd-qty-num">{{ quantity() }}</span>
+            <button class="pd-qty-btn"
+                    (click)="increaseQty()"
+                    [disabled]="quantity() >= product()!.stock"
+                    aria-label="Increase quantity">+</button>
+          </div>
+        }
+
+        <!-- Add to Cart -->
+        <button
+          class="pd-cart-btn"
+          [disabled]="product()!.stock === 0 || isAddingToCart()"
+          (click)="addToCart()">
+          @if (isAddingToCart()) {
+            <span class="btn-spinner"></span>
+            Adding...
+          } @else if (product()!.stock === 0) {
+            Out of stock
+          } @else {
+            Add to cart
+          }
+        </button>
+
+        <!-- Features -->
+        <div class="pd-features">
+          <div class="pd-feature">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            Free delivery on orders above Rs. 2,500
+          </div>
+          <div class="pd-feature">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            Premium denim construction
+          </div>
+          <div class="pd-feature">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            7-day easy return policy
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="pd-reviews">
+      <h2 class="pd-section-title">Customer reviews</h2>
+
+      <!-- Reviews Summary -->
+      @if (reviewsData() && reviewsData()!.totalReviews > 0) {
+        <div class="reviews-summary">
+
+          <!-- Average -->
+          <div class="avg-side">
+            <div class="avg-num">
+              {{ reviewsData()!.averageRating | number:'1.1-1' }}
+            </div>
+            <div class="avg-stars">
+              {{ getStars(reviewsData()!.averageRating) }}
+            </div>
+            <div class="avg-count">
+              {{ reviewsData()!.totalReviews }} reviews
+            </div>
+          </div>
+
+          <!-- Rating Bars -->
+          <div class="rating-bars">
+            @for (star of ratingBars; track star) {
+              <div class="bar-row">
+                <span class="bar-label">{{ star }}★</span>
+                <div class="bar-track">
+                  <div class="bar-fill"
+                       [style.width.%]="getRatingPercent(star)">
+                  </div>
+                </div>
+                <span class="bar-count">
+                  {{ getRatingPercent(star) }}%
+                </span>
+              </div>
+            }
+          </div>
+
+        </div>
+
+        <!-- Review Cards -->
+        <div class="review-list">
+          @for (review of reviewsData()!.reviews; track review.id) {
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">
+                  {{ review.userName.charAt(0).toUpperCase() }}
+                </div>
+                <div>
+                  <div class="review-name">{{ review.userName }}</div>
+                  <div class="review-date">
+                    {{ review.createdAt | date:'MMMM yyyy' }}
+                  </div>
+                </div>
+              </div>
+              <div class="review-stars">
+                {{ getStars(review.rating) }}
+              </div>
+              <p class="review-text">{{ review.comment }}</p>
+            </div>
+          }
+        </div>
+
+      } @else if (!isLoadingReviews()) {
+        <div class="no-reviews">
+          <p>No reviews yet — be the first to review this product!</p>
+        </div>
+      }
+
+      <!-- Write Review -->
+      @if (auth.isLoggedIn()) {
+        <div class="write-review">
+          <h3 class="wr-title">Write a review</h3>
+
+          @if (reviewSuccess()) {
+            <div class="pd-alert pd-alert-success">{{ reviewSuccess() }}</div>
+          }
+          @if (reviewError()) {
+            <div class="pd-alert pd-alert-error">{{ reviewError() }}</div>
+          }
+
+          <!-- Star Rating -->
+          <div class="wr-label">Your rating</div>
+          <div class="wr-stars">
+            @for (star of [1,2,3,4,5]; track star) {
+              <button
+                class="star-btn"
+                [class.star-active]="isStarActive(star)"
+                (mouseenter)="setHoveredStar(star)"
+                (mouseleave)="clearHoveredStar()"
+                (click)="setRating(star)"
+                [attr.aria-label]="star + ' star' + (star > 1 ? 's' : '')">
+                ★
+              </button>
+            }
+          </div>
+
+          <!-- Comment -->
+          <div class="wr-label">Your review</div>
+          <textarea
+            [(ngModel)]="reviewComment"
+            placeholder="Share your experience with this product..."
+            class="wr-textarea"
+            rows="4"
+            aria-label="Review comment">
+          </textarea>
+
+          <!-- Submit -->
+          <button
+            class="wr-submit"
+            (click)="submitReview()"
+            [disabled]="isSubmittingReview()">
+            @if (isSubmittingReview()) {
+              Submitting...
+            } @else {
+              Submit review
+            }
+          </button>
+        </div>
+      } @else {
+        <div class="review-login-prompt">
+          <p>Please sign in to write a review</p>
+          <a routerLink="/auth/login" class="btn-login">Sign in</a>
+        </div>
+      }
+
+    </div>
+
+  </div>
+}

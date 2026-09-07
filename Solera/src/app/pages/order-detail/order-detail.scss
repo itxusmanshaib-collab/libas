@@ -1,0 +1,589 @@
+// ─── Design Tokens ───
+$primary: #1a1a1a;
+$accent: #d4a574;
+$accent-light: #f5ebe0;
+$success: #166534;
+$danger: #dc2626;
+$warning: #e67e22;
+$bg: #fafaf8;
+$card: #ffffff;
+$border: #e8e8e6;
+$text: #333333;
+$text-light: #888888;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+// ─── Loading & Error ───
+.page-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+
+  p {
+    font-size: 14px;
+    color: $text-light;
+  }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $border;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.page-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  text-align: center;
+
+  .error-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $primary;
+  }
+}
+
+// ─── Page ───
+.detail-page {
+  background: $bg;
+  min-height: 80vh;
+  padding: 40px 24px 60px;
+
+  @media (max-width: 768px) {
+    padding: 24px 16px 48px;
+  }
+}
+
+.detail-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+// ─── Header ───
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.detail-header-left {
+  flex: 1;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $primary;
+    margin: 8px 0 6px;
+    letter-spacing: -0.5px;
+
+    .order-num {
+      color: $accent;
+    }
+  }
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: $accent;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #b8895e;
+    gap: 8px;
+  }
+}
+
+.order-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: $text-light;
+
+  svg {
+    opacity: 0.5;
+  }
+}
+
+// ─── Status Badge ───
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+  .status-dot { background: #f59e0b; }
+}
+
+.status-processing {
+  background: #dbeafe;
+  color: #1d4ed8;
+  .status-dot { background: #3b82f6; }
+}
+
+.status-shipped {
+  background: #e0e7ff;
+  color: #4338ca;
+  .status-dot { background: #6366f1; }
+}
+
+.status-delivered {
+  background: #dcfce7;
+  color: $success;
+  .status-dot { background: #22c55e; }
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+  .status-dot { background: #ef4444; }
+}
+
+// ─── Stepper ───
+.stepper-card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+  box-shadow: $shadow-sm;
+}
+
+.stepper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0ee;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2.5px solid #f0f0ee;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.step.done .step-dot {
+  background: $accent;
+  color: #fff;
+  border-color: $accent;
+  box-shadow: 0 3px 12px rgba($accent, 0.35);
+}
+
+.step.current .step-dot {
+  background: $primary;
+  color: #fff;
+  border-color: $primary;
+  box-shadow: 0 3px 12px rgba($primary, 0.3);
+  transform: scale(1.1);
+}
+
+.step-label {
+  font-size: 12px;
+  color: $text-light;
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.2px;
+  transition: color 0.3s ease;
+}
+
+.step.done .step-label,
+.step.current .step-label {
+  color: $primary;
+  font-weight: 600;
+}
+
+.step-line {
+  position: absolute;
+  top: 18px;
+  left: 55%;
+  width: 90%;
+  height: 2.5px;
+  background: #f0f0ee;
+  z-index: 0;
+  border-radius: 2px;
+  transition: background 0.4s ease;
+
+  &.done {
+    background: $accent;
+  }
+}
+
+// ─── Cancelled Banner ───
+.cancelled-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Grid Layout ───
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Detail Card ───
+.detail-card {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border;
+
+  svg {
+    color: $accent;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: $primary;
+    letter-spacing: -0.1px;
+    flex: 1;
+  }
+}
+
+.item-count {
+  background: $accent-light;
+  color: $accent;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+// ─── Items List ───
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #f5f5f3;
+  }
+}
+
+.item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: $shadow-sm;
+  border: 1px solid #f0f0ee;
+}
+
+.item-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $accent-light;
+  color: $accent;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: $primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-qty {
+  font-size: 12px;
+  color: $text-light;
+  margin-top: 3px;
+}
+
+.item-subtotal {
+  font-size: 15px;
+  font-weight: 700;
+  color: $primary;
+  white-space: nowrap;
+}
+
+// ─── Order Summary ───
+.order-summary {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid $border;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: $text-light;
+  padding: 6px 0;
+
+  &.summary-total {
+    font-size: 17px;
+    font-weight: 700;
+    color: $primary;
+    padding-top: 12px;
+  }
+}
+
+.free-shipping {
+  color: $success;
+  font-weight: 600;
+}
+
+.summary-divider {
+  height: 1px;
+  background: $border;
+  margin: 8px 0;
+}
+
+// ─── Delivery Info ───
+.delivery-info {
+  padding: 4px 0;
+}
+
+.delivery-address {
+  font-size: 14px;
+  color: $text;
+  line-height: 1.7;
+}
+
+// ─── Info Rows ───
+.info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #f5f5f3;
+  }
+}
+
+.info-label {
+  font-size: 13px;
+  color: $text-light;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 13px;
+  color: $primary;
+  font-weight: 600;
+}
+
+// ─── Cancel Button ───
+.btn-cancel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 13px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: $shadow-sm;
+  margin-top: 16px;
+
+  &:hover:not(:disabled) {
+    background: #fef2f2;
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+// ─── Error ───
+.msg-error {
+  font-size: 13px;
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+// ─── Help Card ───
+.help-card {
+  background: $accent-light;
+  border: 1px solid #eddfd0;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.help-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $primary;
+  margin-bottom: 4px;
+}
+
+.help-text {
+  font-size: 12px;
+  color: $text-light;
+  line-height: 1.5;
+}
+
+// ─── Gold Button ───
+.btn-gold-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  background: $accent;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    background: #c49464;
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

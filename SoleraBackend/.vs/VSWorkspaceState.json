@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Solera.API",
+    "\\Solera.API\\Controllers",
+    "\\Solera.Application",
+    "\\Solera.Domain",
+    "\\Solera.Domain\\Interfaces",
+    "\\Solera.Infrastructure",
+    "\\Solera.Infrastructure\\Repositories"
+  ],
+  "SelectedNode": "\\Solera.API.slnx",
+  "PreviewInSolutionExplorer": false
+}

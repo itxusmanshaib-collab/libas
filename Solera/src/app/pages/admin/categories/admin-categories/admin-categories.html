@@ -1,0 +1,92 @@
+<div class="adm-page">
+  <div class="adm-page-header">
+    <div>
+      <h1 class="adm-page-title">Categories</h1>
+      <p class="adm-page-sub">{{ categories().length }} categories</p>
+    </div>
+    <button class="adm-btn-primary" (click)="openAddForm()">
+      + Add Category
+    </button>
+  </div>
+
+  @if (successMessage()) {
+    <div class="adm-alert-success">{{ successMessage() }}</div>
+  }
+
+  @if (showForm()) {
+    <div class="adm-modal-backdrop" (click)="closeForm()">
+      <div class="adm-modal" (click)="$event.stopPropagation()">
+        <div class="adm-modal-header">
+          <h2 class="adm-modal-title">
+            {{ editingCategory() ? 'Edit Category' : 'Add Category' }}
+          </h2>
+          <button class="adm-modal-close" (click)="closeForm()">✕</button>
+        </div>
+        @if (errorMessage()) {
+          <div class="adm-alert-error">{{ errorMessage() }}</div>
+        }
+        <div class="adm-form-group">
+          <label class="adm-label">Category Name *</label>
+          <input type="text" [(ngModel)]="form.name"
+                 class="adm-input" placeholder="Slim Fit Jeans" />
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Description</label>
+          <textarea [(ngModel)]="form.description"
+                    class="adm-input adm-textarea" rows="2"></textarea>
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Image URL</label>
+          <input type="text" [(ngModel)]="form.imageUrl"
+                 class="adm-input" placeholder="https://..." />
+        </div>
+        <div class="adm-modal-footer">
+          <button class="adm-btn-outline" (click)="closeForm()">Cancel</button>
+          <button class="adm-btn-primary" (click)="saveCategory()"
+                  [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Saving...' : (editingCategory() ? 'Update' : 'Add') }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="adm-card">
+    <div class="adm-table-wrap">
+      <table class="adm-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Products</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cat of categories(); track cat.id) {
+            <tr>
+              <td>
+                <div class="cat-cell">
+                  <div class="cat-icon-sm">{{ cat.name.charAt(0) }}</div>
+                  <span class="customer-name">{{ cat.name }}</span>
+                </div>
+              </td>
+              <td class="customer-email">
+                {{ cat.description || '—' }}
+              </td>
+              <td class="date-cell">{{ cat.productCount }}</td>
+              <td>
+                <div class="adm-actions-row">
+                  <button class="adm-edit-btn"
+                          (click)="openEditForm(cat)">Edit</button>
+                  <button class="adm-delete-btn"
+                          (click)="deleteCategory(cat)">Delete</button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

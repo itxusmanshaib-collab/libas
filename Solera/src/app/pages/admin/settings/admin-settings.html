@@ -1,0 +1,125 @@
+<div class="admin-settings-page">
+  <div class="settings-header">
+    <h1>Site Settings</h1>
+    <p>Manage your site branding, homepage content, contact info, and theme</p>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-wrap">
+      <div class="loading-spinner"></div>
+      <p>Loading settings...</p>
+    </div>
+  } @else {
+
+    @if (successMsg()) {
+      <div class="alert alert-success">{{ successMsg() }}</div>
+    }
+    @if (errorMsg()) {
+      <div class="alert alert-error">{{ errorMsg() }}</div>
+    }
+
+    <div class="settings-toolbar">
+      <div><strong>Content studio</strong><span>Changes to the hero and theme are saved centrally.</span></div>
+      <button class="btn-preview" type="button" (click)="previewSite()">Preview homepage</button>
+    </div>
+
+    <div class="settings-grid">
+
+      <div class="settings-card hero-settings-card">
+        <h2 class="card-title">Homepage hero</h2>
+        <div class="field"><label>Eyebrow</label><input type="text" [ngModel]="heroEyebrow()" (ngModelChange)="heroEyebrow.set($event)" placeholder="New season / 2026"/></div>
+        <div class="field"><label>Headline</label><input type="text" [ngModel]="heroTitle()" (ngModelChange)="heroTitle.set($event)" placeholder="Denim that moves with you"/></div>
+        <div class="field"><label>Supporting text</label><textarea [ngModel]="heroSubtitle()" (ngModelChange)="heroSubtitle.set($event)" placeholder="Your hero supporting message"></textarea></div>
+        <div class="field-row"><div class="field"><label>Button text</label><input type="text" [ngModel]="heroButtonText()" (ngModelChange)="heroButtonText.set($event)" placeholder="Shop collection"/></div><div class="field"><label>Button link</label><input type="text" [ngModel]="heroButtonUrl()" (ngModelChange)="heroButtonUrl.set($event)" placeholder="/products"/></div></div>
+        <div class="field-row"><div class="field"><label>Hero background</label><div class="color-input"><input type="color" [ngModel]="heroBackground()" (ngModelChange)="heroBackground.set($event)"/><input type="text" [ngModel]="heroBackground()" (ngModelChange)="heroBackground.set($event)"/></div></div><div class="field"><label>Hero text color</label><div class="color-input"><input type="color" [ngModel]="heroTextColor()" (ngModelChange)="heroTextColor.set($event)"/><input type="text" [ngModel]="heroTextColor()" (ngModelChange)="heroTextColor.set($event)"/></div></div></div>
+      </div>
+
+      <div class="settings-card legal-settings-card">
+        <h2 class="card-title">Legal pages</h2>
+        <p class="settings-help">These controls style both Privacy Policy and Terms of Service.</p>
+        <div class="field-row">
+          <div class="field"><label>Accent color</label><div class="color-input"><input type="color" [ngModel]="legalAccent()" (ngModelChange)="legalAccent.set($event)"/><input type="text" [ngModel]="legalAccent()" (ngModelChange)="legalAccent.set($event)"/></div></div>
+          <div class="field"><label>Heading color</label><div class="color-input"><input type="color" [ngModel]="legalHeading()" (ngModelChange)="legalHeading.set($event)"/><input type="text" [ngModel]="legalHeading()" (ngModelChange)="legalHeading.set($event)"/></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Page background</label><div class="color-input"><input type="color" [ngModel]="legalPageBackground()" (ngModelChange)="legalPageBackground.set($event)"/><input type="text" [ngModel]="legalPageBackground()" (ngModelChange)="legalPageBackground.set($event)"/></div></div>
+          <div class="field"><label>Content surface</label><div class="color-input"><input type="color" [ngModel]="legalSurface()" (ngModelChange)="legalSurface.set($event)"/><input type="text" [ngModel]="legalSurface()" (ngModelChange)="legalSurface.set($event)"/></div></div>
+        </div>
+        <div class="legal-preview" [style.background]="legalPageBackground()">
+          <div class="legal-preview-card" [style.background]="legalSurface()">
+            <span [style.color]="legalAccent()">LEGAL PREVIEW</span>
+            <strong [style.color]="legalHeading()">Policy heading</strong>
+            <p [style.color]="legalHeading()">Your Privacy and Terms pages share this visual theme.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Branding -->
+      <div class="settings-card">
+        <h2 class="card-title">Branding</h2>
+        <div class="field">
+          <label>Site Name</label>
+          <input type="text" [ngModel]="siteName()" (ngModelChange)="siteName.set($event)" placeholder="Your site name"/>
+        </div>
+        <div class="field">
+          <label>Tagline</label>
+          <input type="text" [ngModel]="siteTagline()" (ngModelChange)="siteTagline.set($event)" placeholder="Your tagline"/>
+        </div>
+        <div class="field">
+          <label>Footer Text</label>
+          <input type="text" [ngModel]="footerText()" (ngModelChange)="footerText.set($event)" placeholder="Custom footer text"/>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="settings-card">
+        <h2 class="card-title">Contact</h2>
+        <div class="field">
+          <label>WhatsApp Number</label>
+          <input type="tel" [ngModel]="whatsappNumber()" (ngModelChange)="whatsappNumber.set($event)" placeholder="+92 3XX XXXXXXX"/>
+        </div>
+        <div class="field">
+          <label>Facebook URL</label>
+          <input type="url" [ngModel]="facebookUrl()" (ngModelChange)="facebookUrl.set($event)" placeholder="https://facebook.com/..."/>
+        </div>
+        <div class="field">
+          <label>Instagram URL</label>
+          <input type="url" [ngModel]="instagramUrl()" (ngModelChange)="instagramUrl.set($event)" placeholder="https://instagram.com/..."/>
+        </div>
+      </div>
+
+      <!-- Theme -->
+      <div class="settings-card">
+        <h2 class="card-title">Theme</h2>
+        <div class="field-row">
+          <div class="field">
+            <label>Primary Color</label>
+            <div class="color-input">
+              <input type="color" [ngModel]="primaryColor()" (ngModelChange)="primaryColor.set($event)"/>
+              <input type="text" [ngModel]="primaryColor()" (ngModelChange)="primaryColor.set($event)" placeholder="#9333ea"/>
+            </div>
+          </div>
+          <div class="field">
+            <label>Secondary Color</label>
+            <div class="color-input">
+              <input type="color" [ngModel]="secondaryColor()" (ngModelChange)="secondaryColor.set($event)"/>
+              <input type="text" [ngModel]="secondaryColor()" (ngModelChange)="secondaryColor.set($event)" placeholder="#ec4899"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="settings-footer">
+      <button class="btn-save" (click)="saveAll()" [disabled]="saving()">
+        @if (saving()) {
+          <span class="spinner"></span> Saving...
+        } @else {
+          Save all settings
+        }
+      </button>
+    </div>
+
+  }
+</div>

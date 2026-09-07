@@ -1,0 +1,246 @@
+/* ══════════════════════════════════════════════════════
+   Solera Auth Pages — Premium Skincare Ecommerce
+   ══════════════════════════════════════════════════════ */
+
+.auth-page {
+  min-height: 100vh;
+  background: #fafaf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 48px;
+  }
+}
+
+.auth-card {
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Brand */
+.auth-brand {
+  text-align: center;
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    font-size: 13px;
+    color: #999;
+    margin-top: 4px;
+  }
+}
+
+/* Form Box */
+.auth-form-box {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e8e8e6;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 480px) {
+    padding: 24px 20px;
+  }
+}
+
+.auth-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+/* Server Error Banner */
+.field-error-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeSlideIn 0.3s ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.success-banner {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Field */
+.form-field {
+  margin-bottom: 18px;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+
+  .required {
+    color: #dc2626;
+  }
+}
+
+.form-field input {
+  width: 100%;
+  border: 1px solid #e0e0de;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fafaf8;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  &:focus {
+    border-color: #d4a574;
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.12);
+    background: #fff;
+  }
+
+  &::placeholder {
+    color: #ccc;
+  }
+
+  &.input-error {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+  }
+}
+
+/* Password wrapper */
+.password-wrap {
+  position: relative;
+
+  input {
+    padding-right: 50px;
+  }
+}
+
+.toggle-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #d4a574;
+  }
+}
+
+/* Per-field error */
+.field-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #dc2626;
+  margin-top: 6px;
+  animation: fadeSlideIn 0.25s ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Submit Button */
+.auth-btn {
+  width: 100%;
+  padding: 13px;
+  background: #d4a574;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+
+  &:hover:not(:disabled) {
+    background: #c49464;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer Link */
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #999;
+
+  a {
+    color: #d4a574;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #b88a5e;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@if (showHeaderFooter) {
+  <app-header></app-header>
+}
+
+ <main class="min-h-screen bg-gray-50">
+  <router-outlet></router-outlet>
+</main>
+
+@if (showHeaderFooter) {
+  <!-- Place Footer component tag right here -->
+  <app-footer></app-footer>
+  <app-whatsapp></app-whatsapp>
+}

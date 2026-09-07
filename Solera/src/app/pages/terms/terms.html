@@ -1,0 +1,126 @@
+<div class="legal-page terms-page min-h-screen bg-[#fbf9f8] text-slate-700 py-12 px-4 sm:px-6 lg:px-8 font-sans"
+  [style.--legal-accent]="settings.legalAccent()"
+  [style.--legal-page-bg]="settings.legalPageBackground()"
+  [style.--legal-surface]="settings.legalSurface()"
+  [style.--legal-heading]="settings.legalHeading()">
+  <div class="max-w-6xl mx-auto w-full">
+    
+    <div class="border-b border-slate-200/60 pb-8 mb-10 space-y-3 text-left">
+      <span class="text-xs font-bold tracking-widest text-[#DB1F44] uppercase px-3 py-1 rounded-full bg-[#DB1F44]/5 inline-block animate-terms">
+        User Agreement
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 animate-terms">
+        Terms of Service
+      </h1>
+      <p class="text-sm text-slate-400 animate-terms flex items-center gap-2">
+        <span>Last Updated: June 2026</span>
+        <span class="inline-block w-1 h-1 rounded-full bg-slate-300"></span>
+        <span>Version 1.0</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <div class="hidden lg:block lg:col-span-4 sticky top-8 bg-white border border-slate-100 p-6 rounded-2xl shadow-xs animate-terms">
+        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Agreement Sections</h3>
+        <nav class="space-y-1">
+          @for (item of sections; track item.id) {
+            <button 
+              (click)="scrollToSection(item.id)"
+              class="w-full text-left text-sm py-2 px-3 rounded-lg font-medium text-slate-600 hover:text-[#DB1F44] hover:bg-[#DB1F44]/5 transition-all duration-200 cursor-pointer flex items-center justify-between group"
+            >
+              <span>{{ item.title }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-[#DB1F44] transition-all">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          }
+        </nav>
+        
+        <div class="mt-6 pt-6 border-t border-slate-100 text-xs text-slate-400 space-y-2">
+          <p>Have specific operational queries regarding our service terms?</p>
+          <a routerLink="/contact" class="text-[#DB1F44] font-bold hover:underline block">Contact Support &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-span-1 lg:col-span-8 space-y-10 bg-white border border-slate-100 p-6 sm:p-10 rounded-3xl shadow-xs animate-terms">
+        
+        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5 text-sm leading-relaxed text-slate-600">
+          <span class="font-bold text-slate-900 block mb-1">Important Notice</span>
+          Please read these Terms of Service carefully before interacting with our website systems. By creating an account or accessing our services, you explicitly accept to be bound under these operational provisions.
+        </div>
+
+        <section id="acceptance" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            1. Acceptance of Terms
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            By browsing, interacting with, or purchasing assets from Solera Skin, you acknowledge that you have read, understood, and agree to abide completely by this document. If you do not consent to these operational limits, you must suspend your interaction with our application interfaces immediately.
+          </p>
+        </section>
+
+        <section id="accounts" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            2. User Accounts & Security
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            When provisioned with a secure digital profile on our application layers, you assume accountability for preserving credentials secrecy. You verify that:
+          </p>
+          <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1.5">
+            <li>All registration details supplied are accurate, current, and true.</li>
+            <li>You will not misrepresent identities or share profiles with unauthorized entities.</li>
+            <li>You will immediately notify our administrators upon discovering any security compromise.</li>
+          </ul>
+        </section>
+
+        <section id="intellectual" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            3. Intellectual Property
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            All primary materials accessible across our application space—including branding styles, interactive layouts, algorithms, source packages, image configurations, log designs, and text—remain the exclusive intellectual property of Solera Skin. No code blocks or styling parameters may be copied or harvested without explicit permission.
+          </p>
+        </section>
+
+        <section id="purchases" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            4. Products, Orders & Payments
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            We continuously aim to list skin formulations, pricing data, and product parameters as accurately as possible. However, we reserve the authority to adjust pricing scales, correct clerical mistakes, or reject orders if incorrect logistical records arise.
+          </p>
+        </section>
+
+        <section id="limitation" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            5. Limitation of Liability
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            Solera Skin provides localized environmental metrics, skin tracking guides, and sun safeguard indexes as informational services. Our platforms, tools, and advices do not substitute for professional medical dermatology consultations. Under no circumstances will our systems assume liability for unexpected side effects or incorrect user routines.
+          </p>
+        </section>
+
+        <section id="governing" class="space-y-3 scroll-mt-6">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-[#DB1F44] rounded-full"></span>
+            6. Governing Law
+          </h2>
+          <p class="text-sm leading-relaxed text-slate-600">
+            These system agreements and operational privileges are structured and monitored under local corporate rules and guidelines. Any disputes emerging relative to platform performance parameters will be handled under designated jurisdictional arbitrations.
+          </p>
+        </section>
+
+        <div class="border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
+          &copy; {{ currentYear }} Solera Skin Systems. Compliance Terms of Service.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

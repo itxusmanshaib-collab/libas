@@ -1,0 +1,98 @@
+<div class="adm-page">
+  <div class="adm-page-header">
+    <div>
+      <h1 class="adm-page-title">Notifications</h1>
+      <p class="adm-page-sub">Manage top bar announcements</p>
+    </div>
+    <button class="adm-btn-primary" (click)="showForm.set(true)">
+      + New Notification
+    </button>
+  </div>
+
+  @if (successMessage()) {
+    <div class="adm-alert-success">{{ successMessage() }}</div>
+  }
+
+  @if (showForm()) {
+    <div class="adm-modal-backdrop" (click)="showForm.set(false)">
+      <div class="adm-modal" (click)="$event.stopPropagation()">
+        <div class="adm-modal-header">
+          <h2 class="adm-modal-title">New Notification</h2>
+          <button class="adm-modal-close"
+                  (click)="showForm.set(false)">✕</button>
+        </div>
+        <div class="adm-form-group">
+          <label class="adm-label">Message *</label>
+          <input type="text" [(ngModel)]="form.message"
+                 class="adm-input"
+                 placeholder="Free delivery on orders above Rs. 2,500" />
+        </div>
+        <div class="adm-form-grid">
+          <div class="adm-form-group">
+            <label class="adm-label">Background Color</label>
+            <input type="color" [(ngModel)]="form.backgroundColor"
+                   class="adm-input adm-color-input" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Text Color</label>
+            <input type="color" [(ngModel)]="form.textColor"
+                   class="adm-input adm-color-input" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">Start Date</label>
+            <input type="date" [(ngModel)]="form.startDate"
+                   class="adm-input" />
+          </div>
+          <div class="adm-form-group">
+            <label class="adm-label">End Date</label>
+            <input type="date" [(ngModel)]="form.endDate"
+                   class="adm-input" />
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="notif-preview"
+             [style.background]="form.backgroundColor"
+             [style.color]="form.textColor">
+          {{ form.message || 'Notification preview...' }}
+        </div>
+
+        <div class="adm-modal-footer">
+          <button class="adm-btn-outline"
+                  (click)="showForm.set(false)">Cancel</button>
+          <button class="adm-btn-primary" (click)="addNotification()"
+                  [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Adding...' : 'Activate' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="notif-list">
+    @for (notif of notifications(); track notif.id) {
+      <div class="notif-card">
+        <div class="notif-preview-sm"
+             [style.background]="notif.backgroundColor"
+             [style.color]="notif.textColor">
+          {{ notif.message }}
+        </div>
+        <div class="notif-meta">
+          <span class="date-cell">
+            {{ notif.startDate | date:'dd MMM' }} —
+            {{ notif.endDate | date:'dd MMM yy' }}
+          </span>
+          <span class="status-pill"
+                [style.color]="notif.isActive ? '#27ae60' : '#888'"
+                [style.background]="notif.isActive ? '#f0fdf4' : '#f5f5f3'">
+            {{ notif.isActive ? 'Active' : 'Inactive' }}
+          </span>
+          <button class="adm-delete-btn"
+                  (click)="deleteNotification(notif.id)">
+            Delete
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

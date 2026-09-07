@@ -1,0 +1,66 @@
+<section class="wishlist-page">
+  <div class="wishlist-shell">
+    <nav class="wishlist-breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">Home</a><span aria-hidden="true">/</span><span>Wishlist</span>
+    </nav>
+
+    <header class="wishlist-header">
+      <div>
+        <span class="eyebrow">Your edit</span>
+        <h1>Wishlist</h1>
+        <p>Keep the pieces you are considering close.</p>
+      </div>
+      @if (savedProducts().length > 0) {
+        <button class="clear-button" type="button" (click)="clearAll()">Clear wishlist</button>
+      }
+    </header>
+
+    @if (successMessage()) {
+      <div class="wishlist-alert success" role="status">{{ successMessage() }}</div>
+    }
+    @if (errorMessage()) {
+      <div class="wishlist-alert error" role="alert">{{ errorMessage() }}</div>
+    }
+
+    @if (isLoading()) {
+      <div class="wishlist-loading"><span class="loading-spinner"></span><p>Loading your edit...</p></div>
+    } @else if (savedProducts().length === 0) {
+      <div class="wishlist-empty">
+        <div class="empty-mark" aria-hidden="true">♡</div>
+        <span class="eyebrow">Nothing saved yet</span>
+        <h2>Build your next rotation</h2>
+        <p>Save the fits and washes that catch your eye. They will stay here for your next visit.</p>
+        <a routerLink="/products" class="shop-button">Explore denim</a>
+      </div>
+    } @else {
+      <div class="wishlist-summary"><strong>{{ savedProducts().length }}</strong> {{ savedProducts().length === 1 ? 'piece' : 'pieces' }} saved</div>
+      <div class="wishlist-grid">
+        @for (product of savedProducts(); track product.id) {
+          <article class="wishlist-card">
+            <div class="product-image">
+              <a [routerLink]="['/product-detail', product.id]">
+                @if (product.imageUrl) {
+                  <img [src]="imageService.getImageUrl(product.imageUrl)" [alt]="product.name" />
+                } @else {
+                  <span>{{ product.name.charAt(0) }}</span>
+                }
+              </a>
+              <button class="remove-button" type="button" (click)="remove(product.id)" [attr.aria-label]="'Remove ' + product.name + ' from wishlist'">♥</button>
+              @if (product.hasDiscount) { <span class="discount-badge">-{{ product.discountPercentage }}%</span> }
+            </div>
+            <div class="product-info">
+              <a [routerLink]="['/product-detail', product.id]" class="product-name">{{ product.name }}</a>
+              <div class="product-price">
+                <strong>{{ formatPrice(product.finalPrice ?? product.price) }}</strong>
+                @if (product.hasDiscount) { <del>{{ formatPrice(product.price) }}</del> }
+              </div>
+              <button class="cart-button" type="button" [disabled]="product.stock === 0 || addingToCart() === product.id" (click)="addToCart(product)">
+                @if (addingToCart() === product.id) { Adding... } @else if (product.stock === 0) { Out of stock } @else { Add to cart }
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,114 @@
+<!-- Loading -->
+@if (isLoading()) {
+  <div class="adm-loading">
+    <div class="loading-spinner"></div>
+  </div>
+}
+
+@if (!isLoading()) {
+  <div class="adm-page">
+
+    <!-- Page Header -->
+    <div class="adm-page-header">
+      <div>
+        <h1 class="adm-page-title">Dashboard</h1>
+        <p class="adm-page-sub">
+          Welcome back, {{ auth.userName() }}
+        </p>
+      </div>
+      <a routerLink="/admin/products" class="adm-btn-primary">
+        + Add Product
+      </a>
+    </div>
+
+    <!-- Stats Grid -->
+    @if (stats()) {
+      <div class="adm-stats">
+        <div class="adm-stat-card">
+          <div class="adm-stat-label">Total Revenue</div>
+          <div class="adm-stat-value">
+            {{ formatPrice(stats()!.totalRevenue) }}
+          </div>
+          <div class="adm-stat-note">Delivered orders</div>
+        </div>
+        <div class="adm-stat-card">
+          <div class="adm-stat-label">Total Orders</div>
+          <div class="adm-stat-value">{{ stats()!.totalOrders }}</div>
+          <div class="adm-stat-note adm-note-warn">
+            {{ stats()!.pendingOrders }} pending
+          </div>
+        </div>
+        <div class="adm-stat-card">
+          <div class="adm-stat-label">Total Products</div>
+          <div class="adm-stat-value">{{ stats()!.totalProducts }}</div>
+          <div class="adm-stat-note">In catalog</div>
+        </div>
+        <div class="adm-stat-card">
+          <div class="adm-stat-label">Total Users</div>
+          <div class="adm-stat-value">{{ stats()!.totalUsers }}</div>
+          <div class="adm-stat-note">Registered</div>
+        </div>
+      </div>
+    }
+
+    <!-- Recent Orders -->
+    <div class="adm-card">
+      <div class="adm-card-header">
+        <h2 class="adm-card-title">Recent orders</h2>
+        <a routerLink="/admin/orders" class="adm-card-link">
+          View all →
+        </a>
+      </div>
+
+      <div class="adm-table-wrap">
+        <table class="adm-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (order of recentOrders(); track order.id) {
+              <tr>
+                <td class="order-id-cell">#{{ order.id }}</td>
+                <td>
+                  <div class="customer-name">
+                    {{ order.user.fullName }}
+                  </div>
+                  <div class="customer-email">
+                    {{ order.user.email }}
+                  </div>
+                </td>
+                <td class="date-cell">
+                  {{ order.orderDate | date:'dd MMM yyyy' }}
+                </td>
+                <td class="amount-cell">
+                  {{ formatPrice(order.totalAmount) }}
+                </td>
+                <td>
+                  <span class="status-pill"
+                        [style.color]="getStatusColor(order.status)"
+                        [style.background]="getStatusBg(order.status)">
+                    {{ order.status }}
+                  </span>
+                </td>
+                <td>
+                  <a [routerLink]="['/admin/orders']"
+                     class="adm-action-link">
+                    Manage
+                  </a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+}
