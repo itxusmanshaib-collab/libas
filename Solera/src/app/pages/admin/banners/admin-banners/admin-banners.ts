@@ -1,19 +1,22 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
 import { ImageService } from '../../../../core/services/image.service';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 
 @Component({
   selector: 'app-admin-banners',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminTableFooterComponent],
   templateUrl: './admin-banners.html',
   styleUrls: ['./admin-banners.scss']
 })
 export class AdminBannersComponent implements OnInit {
 
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   imageService = inject(ImageService);
   banners = signal<any[]>([]);
   isLoading = signal(true);
@@ -22,6 +25,17 @@ export class AdminBannersComponent implements OnInit {
   errorMessage = signal('');
   isSubmitting = signal(false);
   uploadingImage = signal(false);
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+  filteredBanners = computed(() => {
+    const query = this.searchTerm().trim().toLowerCase();
+    return this.banners().filter(banner => !query || `${banner.title} ${banner.subTitle} ${banner.linkUrl}`.toLowerCase().includes(query));
+  });
+  pagedBanners = computed(() => this.filteredBanners().slice((this.currentPage() - 1) * this.pageSize(), this.currentPage() * this.pageSize()));
+
+  updateSearch(value: string): void { this.searchTerm.set(value); this.currentPage.set(1); }
+  updatePageSize(size: number): void { this.pageSize.set(size); this.currentPage.set(1); }
 
   form = {
     title: '',
@@ -120,13 +134,15 @@ export class AdminBannersComponent implements OnInit {
   }
 
   deleteBanner(id: number): void {
-    if (!confirm('Delete this banner?')) return;
-    this.api.deleteSecure<any>(`banners/${id}`).subscribe({
+    this.confirm.confirm('Are you sure you want to delete this banner?').subscribe(confirmed => {
+      if (!confirmed) return;
+      this.api.deleteSecure<any>(`banners/${id}`).subscribe({
       next: () => {
         this.banners.update(list => list.filter(b => b.id !== id));
         this.successMessage.set('Banner deleted successfully!');
         setTimeout(() => this.successMessage.set(''), 3000);
       }
+      });
     });
   }
 }

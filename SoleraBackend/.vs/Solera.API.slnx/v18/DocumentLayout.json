@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\New folder\\SoleraBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\new folder\\solerabackend\\solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\new folder\\solerabackend\\solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\new folder\\solerabackend\\solera.api\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\controllers\\contactuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\new folder\\solerabackend\\solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|solutionrelative:solera.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\new folder\\solerabackend\\solera.infrastructure\\migrations\\20260902193043_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\migrations\\20260902193043_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|d:\\new folder\\solerabackend\\solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{91FA2B34-E79D-18BE-CD3F-CF96E6751BA9}|Solera.Infrastructure\\Solera.Infrastructure.csproj|solutionrelative:solera.infrastructure\\data\\soleradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD038D8D-3E7B-B917-B3AC-656E98D553BF}|Solera.API\\Solera.API.csproj|d:\\new folder\\solerabackend\\solera.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -206,7 +206,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -214,13 +214,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ContactUsController.cs",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.API\\Controllers\\ContactUsController.cs",
               "RelativeDocumentMoniker": "Solera.API\\Controllers\\ContactUsController.cs",
               "ToolTip": "D:\\New folder\\SoleraBackend\\Solera.API\\Controllers\\ContactUsController.cs",
               "RelativeToolTip": "Solera.API\\Controllers\\ContactUsController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAADwvyUAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAywCUAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-06T11:38:21.302Z",
               "EditorCaption": ""
@@ -251,31 +251,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "SoleraDbContext.cs",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.Infrastructure\\Data\\SoleraDbContext.cs",
               "RelativeDocumentMoniker": "Solera.Infrastructure\\Data\\SoleraDbContext.cs",
               "ToolTip": "D:\\New folder\\SoleraBackend\\Solera.Infrastructure\\Data\\SoleraDbContext.cs",
               "RelativeToolTip": "Solera.Infrastructure\\Data\\SoleraDbContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA3wA4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-04T07:22:25.977Z"
+              "WhenOpened": "2026-07-04T07:22:25.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.API\\Program.cs",
               "RelativeDocumentMoniker": "Solera.API\\Program.cs",
               "ToolTip": "D:\\New folder\\SoleraBackend\\Solera.API\\Program.cs",
               "RelativeToolTip": "Solera.API\\Program.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAvwFoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-29T09:45:32.424Z"
+              "WhenOpened": "2026-06-29T09:45:32.424Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Solera.API\\Properties\\launchSettings.json",
@@ -287,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Solera.API\\appsettings.Development.json",
@@ -311,7 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "20260902193043_UpdateDatabase.cs",
               "DocumentMoniker": "D:\\New folder\\SoleraBackend\\Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",
               "RelativeDocumentMoniker": "Solera.Infrastructure\\Migrations\\20260902193043_UpdateDatabase.cs",

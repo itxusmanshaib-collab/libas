@@ -178,6 +178,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 118px;
+  height: 48px;
   text-decoration: none;
   flex-shrink: 0;
   transition: opacity 0.25s ease;
@@ -186,13 +188,15 @@
     opacity: 0.82;
   }
 
-  &:hover .logo-mark {
-    transform: rotate(-4deg) scale(1.04);
-  }
+  &:hover { opacity: 0.78; }
+}
 
-  &:hover .logo-text {
-    letter-spacing: 2.8px;
-  }
+.brand-logo {
+  display: block;
+  width: 118px;
+  height: 48px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .logo-mark {

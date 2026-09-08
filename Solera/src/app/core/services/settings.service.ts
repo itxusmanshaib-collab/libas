@@ -22,6 +22,7 @@ export class SettingsService {
   readonly isLoading = this._isLoading.asReadonly();
 
   readonly siteName = computed(() => this.get('site_name') || 'Libas Junior');
+  readonly logoUrl = computed(() => this.get('logo_url') || 'assets/logo/logo.jpeg');
   readonly siteTagline = computed(() => this.get('site_tagline') || "Men's Denim, Made Better");
   readonly whatsappNumber = computed(() => this.get('whatsapp_number') || '');
   readonly primaryColor = computed(() => this.get('theme_primary_color') || this.get('primary_color') || '#12263a');
@@ -89,6 +90,9 @@ export class SettingsService {
       root.style.setProperty('--color-accent', secondary);
       root.style.setProperty('--pink-500', secondary);
     }
+    root.style.setProperty('--color-primary-light', `color-mix(in srgb, ${primary || '#12263a'} 72%, white)`);
+    root.style.setProperty('--color-accent-dark', `color-mix(in srgb, ${secondary || '#d6a85f'} 78%, black)`);
+    root.style.setProperty('--color-accent-light', `color-mix(in srgb, ${secondary || '#d6a85f'} 14%, white)`);
     root.style.setProperty('--hero-background', this.heroBackground());
     root.style.setProperty('--hero-text-color', this.heroTextColor());
   }

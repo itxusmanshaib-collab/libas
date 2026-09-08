@@ -1,23 +1,33 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
 import { CustomDropdownComponent, DropdownOption } from '../../../../shared/components/custom-dropdown/custom-dropdown';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 
 @Component({
   selector: 'app-admin-testimonials',
   standalone: true,
-  imports: [CommonModule, FormsModule, CustomDropdownComponent],
+  imports: [CommonModule, FormsModule, CustomDropdownComponent, AdminTableFooterComponent],
   templateUrl: './admin-testimonials.html',
 })
 export class AdminTestimonialsComponent implements OnInit {
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   testimonials = signal<any[]>([]);
   isLoading = signal(true);
   showForm = signal(false);
   isSubmitting = signal(false);
   successMessage = signal('');
   editingId = signal<number | null>(null);
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+  filteredTestimonials = computed(() => { const query = this.searchTerm().trim().toLowerCase(); return this.testimonials().filter(item => !query || `${item.customerName} ${item.customerRole} ${item.content}`.toLowerCase().includes(query)); });
+  pagedTestimonials = computed(() => this.filteredTestimonials().slice((this.currentPage() - 1) * this.pageSize(), this.currentPage() * this.pageSize()));
+  updateSearch(value: string): void { this.searchTerm.set(value); this.currentPage.set(1); }
+  updatePageSize(size: number): void { this.pageSize.set(size); this.currentPage.set(1); }
 
   form = {
     customerName: '',
@@ -79,9 +89,11 @@ export class AdminTestimonialsComponent implements OnInit {
   }
 
   delete(id: number): void {
-    if (!confirm('Delete this testimonial?')) return;
-    this.api.deleteSecure<any>(`testimonials/${id}`).subscribe({
+    this.confirm.confirm('Are you sure you want to delete this testimonial?').subscribe(confirmed => {
+      if (!confirmed) return;
+      this.api.deleteSecure<any>(`testimonials/${id}`).subscribe({
       next: () => { this.load(); this.successMessage.set('Deleted!'); setTimeout(() => this.successMessage.set(''), 3000); }
+      });
     });
   }
 }

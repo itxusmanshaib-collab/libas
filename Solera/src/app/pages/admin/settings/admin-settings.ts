@@ -21,6 +21,7 @@ export class AdminSettings implements OnInit {
   errorMsg = signal('');
 
   siteName = signal('');
+  logoUrl = signal('assets/logo/logo.jpeg');
   siteTagline = signal('');
   whatsappNumber = signal('');
   primaryColor = signal('');
@@ -62,6 +63,7 @@ export class AdminSettings implements OnInit {
   private populateForm(items: SettingItem[]): void {
     const get = (key: string) => items.find(s => s.key === key)?.value || '';
     this.siteName.set(get('site_name'));
+    this.logoUrl.set(get('logo_url') || 'assets/logo/logo.jpeg');
     this.siteTagline.set(get('site_tagline'));
     this.whatsappNumber.set(get('whatsapp_number'));
     this.primaryColor.set(get('theme_primary_color'));
@@ -89,6 +91,7 @@ export class AdminSettings implements OnInit {
 
     const updates: { key: string; value: string }[] = [
       { key: 'site_name', value: this.siteName() },
+      { key: 'logo_url', value: this.logoUrl() },
       { key: 'site_tagline', value: this.siteTagline() },
       { key: 'whatsapp_number', value: this.whatsappNumber() },
       { key: 'theme_primary_color', value: this.primaryColor() },

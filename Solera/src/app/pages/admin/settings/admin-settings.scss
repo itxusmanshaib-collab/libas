@@ -163,6 +163,30 @@ textarea:focus { outline: none; border-color: #d4a574; background: #fff; }
   margin: -10px 0 20px;
 }
 
+.brand-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafaf8;
+
+  img {
+    width: 92px;
+    height: 58px;
+    border-radius: 4px;
+    background: #fff;
+    object-fit: contain;
+  }
+
+  strong,
+  span { display: block; }
+  strong { color: #222; font-size: 13px; }
+  span { margin-top: 4px; color: #888; font-size: 11px; line-height: 1.4; }
+}
+
 .legal-preview {
   border: 1px solid #e8e8e6;
   margin-top: 6px;

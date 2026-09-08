@@ -1,18 +1,21 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
 import { Category } from '../../../../core/models/category.model';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 
 @Component({
   selector: 'app-admin-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminTableFooterComponent],
   templateUrl: './admin-categories.html',
 })
 export class AdminCategoriesComponent implements OnInit {
 
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   categories = signal<Category[]>([]);
   isLoading = signal(true);
   showForm = signal(false);
@@ -20,11 +23,36 @@ export class AdminCategoriesComponent implements OnInit {
   successMessage = signal('');
   errorMessage = signal('');
   editingCategory = signal<Category | null>(null);
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+
+  filteredCategories = computed(() => {
+    const query = this.searchTerm().trim().toLowerCase();
+    return this.categories().filter(category =>
+      !query || `${category.name} ${category.description}`.toLowerCase().includes(query)
+    );
+  });
+
+  pagedCategories = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize();
+    return this.filteredCategories().slice(start, start + this.pageSize());
+  });
 
   form = { name: '', description: '', imageUrl: '' };
 
   ngOnInit(): void {
     this.loadCategories();
+  }
+
+  updateSearch(value: string): void {
+    this.searchTerm.set(value);
+    this.currentPage.set(1);
+  }
+
+  updatePageSize(size: number): void {
+    this.pageSize.set(size);
+    this.currentPage.set(1);
   }
 
   loadCategories(): void {
@@ -92,8 +120,9 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   deleteCategory(cat: Category): void {
-    if (!confirm(`Delete "${cat.name}"?`)) return;
-    this.api.deleteSecure<any>(`categories/${cat.id}`).subscribe({
+    this.confirm.confirm(`Are you sure you want to delete "${cat.name}"?`).subscribe(confirmed => {
+      if (!confirmed) return;
+      this.api.deleteSecure<any>(`categories/${cat.id}`).subscribe({
       next: (res) => {
         if (res.success) {
           this.categories.update(list =>
@@ -103,6 +132,7 @@ export class AdminCategoriesComponent implements OnInit {
           setTimeout(() => this.successMessage.set(''), 3000);
         }
       }
+      });
     });
   }
 }

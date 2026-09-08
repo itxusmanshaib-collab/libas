@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../../../core/services/api.service';
@@ -38,6 +38,24 @@ export class AdminDashboardComponent implements OnInit {
   stats = signal<DashboardStats | null>(null);
   recentOrders = signal<RecentOrder[]>([]);
   isLoading = signal(true);
+
+  statusSummary = computed(() => {
+    const orders = this.recentOrders();
+    return [
+      { label: 'Pending', value: orders.filter(order => order.status === 'Pending').length, color: '#d97706', background: '#fff7ed' },
+      { label: 'Processing', value: orders.filter(order => order.status === 'Processing').length, color: '#2563eb', background: '#eff6ff' },
+      { label: 'Shipped', value: orders.filter(order => order.status === 'Shipped').length, color: '#7c3aed', background: '#f5f3ff' },
+      { label: 'Delivered', value: orders.filter(order => order.status === 'Delivered').length, color: '#15803d', background: '#f0fdf4' },
+    ];
+  });
+
+  orderProgress = computed(() => {
+    const total = this.recentOrders().length || 1;
+    return this.statusSummary().map(item => ({
+      ...item,
+      width: `${Math.max(item.value / total * 100, item.value ? 8 : 0)}%`,
+    }));
+  });
 
   ngOnInit(): void {
     this.loadDashboard();

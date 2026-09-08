@@ -1,7 +1,8 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../../core/services/api.service';
 import { CustomDropdownComponent, DropdownOption } from '../../../../shared/components/custom-dropdown/custom-dropdown';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
 
 
 interface AdminUser {
@@ -16,7 +17,7 @@ interface AdminUser {
 @Component({
   selector: 'app-admin-users',
   standalone: true,
-  imports: [CommonModule, CustomDropdownComponent],
+  imports: [CommonModule, CustomDropdownComponent, AdminTableFooterComponent],
   templateUrl: './admin-users.html',
 })
 export class AdminUsersComponent implements OnInit {
@@ -25,6 +26,21 @@ export class AdminUsersComponent implements OnInit {
   users = signal<AdminUser[]>([]);
   isLoading = signal(true);
   successMessage = signal('');
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+
+  filteredUsers = computed(() => {
+    const query = this.searchTerm().trim().toLowerCase();
+    return this.users().filter(user =>
+      !query || `${user.fullName} ${user.email} ${user.role}`.toLowerCase().includes(query)
+    );
+  });
+
+  pagedUsers = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize();
+    return this.filteredUsers().slice(start, start + this.pageSize());
+  });
 
   roleOptions: DropdownOption[] = [
     { label: 'User', value: 'User' },
@@ -38,6 +54,16 @@ export class AdminUsersComponent implements OnInit {
         this.isLoading.set(false);
       }
     });
+  }
+
+  updateSearch(value: string): void {
+    this.searchTerm.set(value);
+    this.currentPage.set(1);
+  }
+
+  updatePageSize(size: number): void {
+    this.pageSize.set(size);
+    this.currentPage.set(1);
   }
 
   changeRole(user: AdminUser, role: string): void {

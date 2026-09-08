@@ -1,4 +1,5 @@
 <div class="adm-wrap">
+  <app-admin-confirm-dialog></app-admin-confirm-dialog>
 
   <!-- Sidebar Toggle Button (only on mobile) -->
     <button class="sidebar-toggle"
@@ -15,9 +16,9 @@
 
     <!-- Logo -->
     <div class="adm-logo">
-      <div class="adm-logo-mark">S</div>
+      <img class="adm-brand-logo" [src]="settings.logoUrl()" [alt]="settings.siteName()" />
       <div>
-        <div class="adm-logo-name">{{ config.appName() }}</div>
+        <div class="adm-logo-name">{{ settings.siteName() }}</div>
         <div class="adm-logo-badge">Admin Panel</div>
       </div>
     </div>

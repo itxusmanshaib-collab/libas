@@ -22,10 +22,7 @@
 
     <!-- Logo -->
     <a routerLink="/" class="logo">
-      <div class="logo-mark">
-        <span>S</span>
-      </div>
-      <span class="logo-text">{{ settings.siteName() }}</span>
+      <img class="brand-logo" [src]="settings.logoUrl()" [alt]="settings.siteName()" />
     </a>
 
     <!-- Desktop Nav -->

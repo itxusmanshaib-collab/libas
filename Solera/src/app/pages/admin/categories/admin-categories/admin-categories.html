@@ -51,7 +51,17 @@
     </div>
   }
 
-  <div class="adm-card">
+  <div class="adm-card admin-data-card">
+    <div class="admin-table-toolbar">
+      <div class="admin-table-heading">
+        <span class="admin-table-heading-icon">✦</span>
+        <strong>Categories</strong>
+      </div>
+      <div class="admin-table-search">
+        <input type="search" placeholder="Search Category" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search categories" />
+        <span aria-hidden="true">⌕</span>
+      </div>
+    </div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>
@@ -63,7 +73,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (cat of categories(); track cat.id) {
+          @for (cat of pagedCategories(); track cat.id) {
             <tr>
               <td>
                 <div class="cat-cell">
@@ -88,5 +98,12 @@
         </tbody>
       </table>
     </div>
+    <app-admin-table-footer
+      [totalItems]="filteredCategories().length"
+      [pageSize]="pageSize()"
+      [currentPage]="currentPage()"
+      (pageSizeChange)="updatePageSize($event)"
+      (pageChange)="currentPage.set($event)">
+    </app-admin-table-footer>
   </div>
 </div>

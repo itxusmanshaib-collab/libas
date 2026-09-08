@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
@@ -8,16 +8,19 @@ import { Product } from '../../../../core/models/product.model';
 import { Category } from '../../../../core/models/category.model';
 import { CustomDropdownComponent, DropdownOption } from '../../../../shared/components/custom-dropdown/custom-dropdown';
 import { forkJoin } from 'rxjs';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 
 @Component({
   selector: 'app-admin-products',
   standalone: true,
-  imports: [CommonModule, FormsModule, CustomDropdownComponent],
+  imports: [CommonModule, FormsModule, CustomDropdownComponent, AdminTableFooterComponent],
   templateUrl: './admin-products.html',
 })
 export class AdminProductsComponent implements OnInit {
 
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   config = inject(AppConfigService);
   imageService = inject(ImageService);
 
@@ -31,6 +34,22 @@ export class AdminProductsComponent implements OnInit {
   errorMessage = signal('');
   uploadingImage = signal(false);
   validationErrors = signal<Record<string, string>>({});
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+
+  filteredProducts = computed(() => {
+    const query = this.searchTerm().trim().toLowerCase();
+    return this.products().filter(product => {
+      const category = this.getCategoryName(product.categoryId);
+      return !query || `${product.name} ${product.description} ${category}`.toLowerCase().includes(query);
+    });
+  });
+
+  pagedProducts = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize();
+    return this.filteredProducts().slice(start, start + this.pageSize());
+  });
 
   statusOptions: DropdownOption[] = [
     { label: 'Active', value: 'true' },
@@ -62,6 +81,16 @@ export class AdminProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  updateSearch(value: string): void {
+    this.searchTerm.set(value);
+    this.currentPage.set(1);
+  }
+
+  updatePageSize(size: number): void {
+    this.pageSize.set(size);
+    this.currentPage.set(1);
   }
 
   loadData(): void {
@@ -222,9 +251,9 @@ export class AdminProductsComponent implements OnInit {
   }
 
   deleteProduct(product: Product): void {
-    if (!confirm(`Delete "${product.name}"?`)) return;
-
-    this.api.deleteSecure<any>(`products/${product.id}`).subscribe({
+    this.confirm.confirm(`Are you sure you want to delete "${product.name}"?`).subscribe(confirmed => {
+      if (!confirmed) return;
+      this.api.deleteSecure<any>(`products/${product.id}`).subscribe({
       next: (res) => {
         if (res.success) {
           this.products.update(list =>
@@ -234,6 +263,7 @@ export class AdminProductsComponent implements OnInit {
           setTimeout(() => this.successMessage.set(''), 3000);
         }
       }
+      });
     });
   }
 

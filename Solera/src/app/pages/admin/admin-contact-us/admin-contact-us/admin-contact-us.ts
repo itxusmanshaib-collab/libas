@@ -1,4 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
@@ -13,6 +14,7 @@ import { ApiService } from '../../../../core/services/api.service';
 export class AdminContactUsComponent implements OnInit {
 
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   messages = signal<any[]>([]);
   isLoading = signal(true);
   successMessage = signal('');
@@ -76,9 +78,10 @@ export class AdminContactUsComponent implements OnInit {
   }
 
   deleteMessage(id: number): void {
-    if (!confirm('Delete this message?')) return;
-    this.deleting.set(true);
-    this.api.deleteSecure<any>(`contactus/${id}`).subscribe({
+    this.confirm.confirm('Are you sure you want to delete this message?').subscribe(confirmed => {
+      if (!confirmed) return;
+      this.deleting.set(true);
+      this.api.deleteSecure<any>(`contactus/${id}`).subscribe({
       next: () => {
         this.messages.update(list => list.filter(m => m.id !== id));
         this.successMessage.set('Message delete ho gaya');
@@ -89,6 +92,7 @@ export class AdminContactUsComponent implements OnInit {
         this.errorMessage.set('Delete fail');
         this.deleting.set(false);
       }
+      });
     });
   }
 }

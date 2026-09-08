@@ -57,9 +57,17 @@
       <!-- Branding -->
       <div class="settings-card">
         <h2 class="card-title">Branding</h2>
+        <div class="brand-preview">
+          <img [src]="logoUrl()" [alt]="siteName() || 'Brand logo'" />
+          <div><strong>Live brand mark</strong><span>Used in the storefront header, footer and admin panel.</span></div>
+        </div>
         <div class="field">
           <label>Site Name</label>
           <input type="text" [ngModel]="siteName()" (ngModelChange)="siteName.set($event)" placeholder="Your site name"/>
+        </div>
+        <div class="field">
+          <label>Logo URL or asset path</label>
+          <input type="text" [ngModel]="logoUrl()" (ngModelChange)="logoUrl.set($event)" placeholder="assets/logo/logo.jpeg"/>
         </div>
         <div class="field">
           <label>Tagline</label>

@@ -1,0 +1,92 @@
+:host { display: contents; }
+
+.confirm-backdrop {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(20, 29, 34, 0.52);
+  animation: confirmFade .16s ease-out;
+}
+
+.confirm-dialog {
+  width: min(356px, 100%);
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(14, 25, 31, .24);
+  animation: confirmPop .18s ease-out;
+}
+
+.confirm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 20px;
+  background: var(--color-accent, #f59e0b);
+  color: #fff;
+  font-size: 16px;
+}
+
+.confirm-close {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.confirm-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px 12px;
+  color: #56636e;
+
+  p { margin: 0; font-size: 14px; line-height: 1.45; }
+}
+
+.confirm-trash {
+  display: grid;
+  width: 32px;
+  height: 36px;
+  flex: 0 0 32px;
+  place-items: center;
+  color: #52606d;
+  svg { width: 30px; height: 30px; }
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 4px 16px 16px;
+
+  button {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
+.confirm-cancel { background: #f4f5f6; color: #63707a; }
+.confirm-delete { background: #ef4444; color: #fff; }
+.confirm-cancel:hover { background: #e9ebed; }
+.confirm-delete:hover { background: #dc2626; }
+
+@keyframes confirmFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes confirmPop { from { opacity: 0; transform: scale(.96) translateY(5px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+@media (max-width: 420px) {
+  .confirm-actions { flex-direction: column-reverse; }
+  .confirm-actions button { width: 100%; }
+}

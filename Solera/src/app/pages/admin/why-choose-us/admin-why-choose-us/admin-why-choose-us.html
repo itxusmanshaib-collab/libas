@@ -56,7 +56,8 @@
     </div>
   }
 
-  <div class="adm-card">
+  <div class="adm-card admin-data-card">
+    <div class="admin-table-toolbar"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Why Choose Us</strong></div><div class="admin-table-search"><input type="search" placeholder="Search Feature" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search features" /><span>⌕</span></div></div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>
@@ -70,7 +71,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of items(); track item.id) {
+          @for (item of pagedItems(); track item.id) {
             <tr>
               <td style="font-size: 1.5rem">{{ item.icon }}</td>
               <td>
@@ -106,5 +107,6 @@
         </tbody>
       </table>
     </div>
+    <app-admin-table-footer [totalItems]="filteredItems().length" [pageSize]="pageSize()" [currentPage]="currentPage()" (pageSizeChange)="updatePageSize($event)" (pageChange)="currentPage.set($event)"></app-admin-table-footer>
   </div>
 </div>

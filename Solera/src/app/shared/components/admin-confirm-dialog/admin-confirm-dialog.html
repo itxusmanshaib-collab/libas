@@ -1,0 +1,22 @@
+@if (confirm.dialog(); as dialog) {
+  <div class="confirm-backdrop" (click)="confirm.respond(false)">
+    <section class="confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" (click)="$event.stopPropagation()">
+      <header class="confirm-header">
+        <strong id="confirm-title">{{ dialog.title }}</strong>
+        <button type="button" class="confirm-close" (click)="confirm.respond(false)" aria-label="Close confirmation">&times;</button>
+      </header>
+      <div class="confirm-content">
+        <div class="confirm-trash" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3" />
+          </svg>
+        </div>
+        <p>{{ dialog.message }}</p>
+      </div>
+      <footer class="confirm-actions">
+        <button type="button" class="confirm-cancel" (click)="confirm.respond(false)"><span aria-hidden="true">&times;</span> No, Cancel</button>
+        <button type="button" class="confirm-delete" (click)="confirm.respond(true)"><span aria-hidden="true">&#10003;</span> Yes, Delete</button>
+      </footer>
+    </section>
+  </div>
+}

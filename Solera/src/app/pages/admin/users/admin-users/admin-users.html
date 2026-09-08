@@ -10,7 +10,18 @@
     <div class="adm-alert-success">{{ successMessage() }}</div>
   }
 
-  <div class="adm-card">
+  <div class="adm-card admin-data-card">
+    <div class="admin-table-toolbar">
+      <div class="admin-table-heading">
+        <span class="admin-table-heading-icon">✦</span>
+        <strong>Users</strong>
+      </div>
+      <div class="admin-table-search">
+        <input type="search" placeholder="Search User" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search users" />
+        <span aria-hidden="true">⌕</span>
+      </div>
+    </div>
+    <div class="adm-table-wrap">
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>
@@ -31,7 +42,7 @@
               </td>
             </tr>
           }
-          @for (user of users(); track user.id) {
+          @for (user of pagedUsers(); track user.id) {
             <tr>
               <td>
                 <div class="user-cell">
@@ -66,5 +77,12 @@
         </tbody>
       </table>
     </div>
+    <app-admin-table-footer
+      [totalItems]="filteredUsers().length"
+      [pageSize]="pageSize()"
+      [currentPage]="currentPage()"
+      (pageSizeChange)="updatePageSize($event)"
+      (pageChange)="currentPage.set($event)">
+    </app-admin-table-footer>
   </div>
 </div>

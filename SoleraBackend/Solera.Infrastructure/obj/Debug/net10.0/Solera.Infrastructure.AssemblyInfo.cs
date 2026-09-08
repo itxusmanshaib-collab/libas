@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Solera.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57d3023f5b84d1c9e364e8e1aaffa62c06ab9913")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32f5856b87ed168c3c6342bfd93288ecfd9b5610")]
 [assembly: System.Reflection.AssemblyProductAttribute("Solera.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Solera.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

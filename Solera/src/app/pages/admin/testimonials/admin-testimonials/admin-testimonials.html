@@ -66,7 +66,8 @@
     </div>
   }
 
-  <div class="adm-card">
+  <div class="adm-card admin-data-card">
+    <div class="admin-table-toolbar"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Testimonials</strong></div><div class="admin-table-search"><input type="search" placeholder="Search Testimonial" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search testimonials" /><span>⌕</span></div></div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>
@@ -80,7 +81,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (t of testimonials(); track t.id) {
+          @for (t of pagedTestimonials(); track t.id) {
             <tr>
               <td>
                 <div class="customer-name">{{ t.customerName }}</div>
@@ -114,5 +115,6 @@
         </tbody>
       </table>
     </div>
+    <app-admin-table-footer [totalItems]="filteredTestimonials().length" [pageSize]="pageSize()" [currentPage]="currentPage()" (pageSizeChange)="updatePageSize($event)" (pageChange)="currentPage.set($event)"></app-admin-table-footer>
   </div>
 </div>

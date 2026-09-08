@@ -1,10 +1,11 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppConfigService } from '../../../../core/services/app-config.service';
 import { ApiService } from '../../../../core/services/api.service';
 import { ImageService } from '../../../../core/services/image.service';
 import { CustomDropdownComponent, DropdownOption } from '../../../../shared/components/custom-dropdown/custom-dropdown';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
 
 
 interface Order {
@@ -37,7 +38,7 @@ interface OrderItem {
 @Component({
   selector: 'app-admin-orders',
   standalone: true,
-  imports: [CommonModule, FormsModule, CustomDropdownComponent],
+  imports: [CommonModule, FormsModule, CustomDropdownComponent, AdminTableFooterComponent],
   templateUrl: './admin-orders.html',
   styleUrl: './admin-orders.scss'
 })
@@ -53,6 +54,9 @@ export class AdminOrdersComponent implements OnInit {
   filterStatus = signal('All');
   successMessage = signal('');
   selectedOrder = signal<Order | null>(null);
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
 
   statuses = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
@@ -64,20 +68,39 @@ export class AdminOrdersComponent implements OnInit {
     { label: 'Cancelled', value: 'Cancelled' },
   ];
 
-  filteredOrders = () => {
+  filteredOrders = computed(() => {
     const status = this.filterStatus();
-    if (status === 'All') return this.orders();
-    return this.orders().filter(o => o.status === status);
-  };
+    const query = this.searchTerm().trim().toLowerCase();
+    return this.orders().filter(order => {
+      const matchesStatus = status === 'All' || order.status === status;
+      const matchesSearch = !query || `${order.id} ${order.user.fullName} ${order.user.email} ${order.phoneNumber ?? ''}`.toLowerCase().includes(query);
+      return matchesStatus && matchesSearch;
+    });
+  });
+
+  pagedOrders = computed(() => {
+    const start = (this.currentPage() - 1) * this.pageSize();
+    return this.filteredOrders().slice(start, start + this.pageSize());
+  });
 
   ngOnInit(): void {
     this.loadOrders();
   }
 
+  updateSearch(value: string): void {
+    this.searchTerm.set(value);
+    this.currentPage.set(1);
+  }
+
+  updatePageSize(size: number): void {
+    this.pageSize.set(size);
+    this.currentPage.set(1);
+  }
+
   loadOrders(): void {
     this.api.getSecure<any>('admin/orders').subscribe({
       next: (res) => {
-        if (res.success) this.orders.set(res.data);
+          if (res.success) this.orders.set(res.data);
         this.isLoading.set(false);
       },
       error: () => this.isLoading.set(false)

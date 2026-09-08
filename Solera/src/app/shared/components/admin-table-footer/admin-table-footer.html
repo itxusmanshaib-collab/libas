@@ -1,0 +1,22 @@
+<div class="admin-table-footer">
+  <span class="table-summary">Showing {{ startItem }} to {{ endItem }} of {{ totalItems }} entries</span>
+
+  <div class="table-footer-actions">
+    <div class="page-size-control">
+      <label for="page-size">Rows</label>
+      <select id="page-size" [value]="pageSize" (change)="setPageSize($any($event.target).value)">
+        @for (size of pageSizes; track size) {
+          <option [value]="size">{{ size }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="pagination" aria-label="Table pagination">
+      <button type="button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1" aria-label="Previous page">&#8249;</button>
+      @for (page of pages; track page) {
+        <button type="button" [class.active]="page === currentPage" (click)="goToPage(page)">{{ page }}</button>
+      }
+      <button type="button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages" aria-label="Next page">&#8250;</button>
+    </div>
+  </div>
+</div>

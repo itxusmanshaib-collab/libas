@@ -58,14 +58,14 @@
 
 /* ── Brand Column ── */
 
-.footer-logo {
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  transition: color 0.25s ease;
+.footer-brand-logo {
+  display: block;
+  width: 148px;
+  height: 76px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: #fff;
 }
 
 .footer-tagline {

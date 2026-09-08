@@ -1,22 +1,32 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
+import { AdminTableFooterComponent } from '../../../../shared/components/admin-table-footer/admin-table-footer';
+import { AdminConfirmService } from '../../../../core/services/admin-confirm.service';
 
 @Component({
   selector: 'app-admin-why-choose-us',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminTableFooterComponent],
   templateUrl: './admin-why-choose-us.html',
 })
 export class AdminWhyChooseUsComponent implements OnInit {
   private api = inject(ApiService);
+  private confirm = inject(AdminConfirmService);
   items = signal<any[]>([]);
   isLoading = signal(true);
   showForm = signal(false);
   isSubmitting = signal(false);
   successMessage = signal('');
   editingId = signal<number | null>(null);
+  searchTerm = signal('');
+  pageSize = signal(10);
+  currentPage = signal(1);
+  filteredItems = computed(() => { const query = this.searchTerm().trim().toLowerCase(); return this.items().filter(item => !query || `${item.title} ${item.description} ${item.icon}`.toLowerCase().includes(query)); });
+  pagedItems = computed(() => this.filteredItems().slice((this.currentPage() - 1) * this.pageSize(), this.currentPage() * this.pageSize()));
+  updateSearch(value: string): void { this.searchTerm.set(value); this.currentPage.set(1); }
+  updatePageSize(size: number): void { this.pageSize.set(size); this.currentPage.set(1); }
 
   form = {
     title: '',
@@ -70,9 +80,11 @@ export class AdminWhyChooseUsComponent implements OnInit {
   }
 
   delete(id: number): void {
-    if (!confirm('Delete this item?')) return;
-    this.api.deleteSecure<any>(`whychooseus/${id}`).subscribe({
+    this.confirm.confirm('Are you sure you want to delete this item?').subscribe(confirmed => {
+      if (!confirmed) return;
+      this.api.deleteSecure<any>(`whychooseus/${id}`).subscribe({
       next: () => { this.load(); this.successMessage.set('Deleted!'); setTimeout(() => this.successMessage.set(''), 3000); }
+      });
     });
   }
 }

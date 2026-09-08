@@ -9,41 +9,47 @@
   <div class="adm-page">
 
     <!-- Page Header -->
-    <div class="adm-page-header">
+    <div class="dashboard-hero adm-page-header">
       <div>
-        <h1 class="adm-page-title">Dashboard</h1>
+        <span class="dashboard-eyebrow">Operations overview</span>
+        <h1 class="adm-page-title">Good to see you, {{ auth.userName() }}</h1>
         <p class="adm-page-sub">
-          Welcome back, {{ auth.userName() }}
+          Here is what is happening across your store today.
         </p>
       </div>
-      <a routerLink="/admin/products" class="adm-btn-primary">
-        + Add Product
-      </a>
+      <div class="dashboard-actions">
+        <a routerLink="/admin/orders" class="adm-btn-outline">View orders</a>
+        <a routerLink="/admin/products" class="adm-btn-primary">+ Add product</a>
+      </div>
     </div>
 
     <!-- Stats Grid -->
     @if (stats()) {
       <div class="adm-stats">
-        <div class="adm-stat-card">
+        <div class="adm-stat-card stat-revenue">
+          <div class="stat-icon">Rs</div>
           <div class="adm-stat-label">Total Revenue</div>
           <div class="adm-stat-value">
             {{ formatPrice(stats()!.totalRevenue) }}
           </div>
           <div class="adm-stat-note">Delivered orders</div>
         </div>
-        <div class="adm-stat-card">
+        <div class="adm-stat-card stat-orders">
+          <div class="stat-icon">#</div>
           <div class="adm-stat-label">Total Orders</div>
           <div class="adm-stat-value">{{ stats()!.totalOrders }}</div>
           <div class="adm-stat-note adm-note-warn">
             {{ stats()!.pendingOrders }} pending
           </div>
         </div>
-        <div class="adm-stat-card">
+        <div class="adm-stat-card stat-products">
+          <div class="stat-icon">◆</div>
           <div class="adm-stat-label">Total Products</div>
           <div class="adm-stat-value">{{ stats()!.totalProducts }}</div>
           <div class="adm-stat-note">In catalog</div>
         </div>
-        <div class="adm-stat-card">
+        <div class="adm-stat-card stat-users">
+          <div class="stat-icon">◎</div>
           <div class="adm-stat-label">Total Users</div>
           <div class="adm-stat-value">{{ stats()!.totalUsers }}</div>
           <div class="adm-stat-note">Registered</div>
@@ -51,13 +57,38 @@
       </div>
     }
 
+    <div class="dashboard-grid">
+      <section class="adm-card status-card">
+        <div class="section-heading">
+          <div><span class="section-kicker">At a glance</span><h2 class="adm-card-title">Order pipeline</h2></div>
+          <a routerLink="/admin/orders" class="adm-card-link">Manage</a>
+        </div>
+        <div class="status-list">
+          @for (item of orderProgress(); track item.label) {
+            <div class="status-row">
+              <div class="status-row-label"><span class="status-dot" [style.background]="item.color"></span><span>{{ item.label }}</span><strong>{{ item.value }}</strong></div>
+              <div class="status-track"><span [style.width]="item.width" [style.background]="item.color"></span></div>
+            </div>
+          }
+        </div>
+        <div class="pipeline-note">Showing the latest {{ recentOrders().length }} orders</div>
+      </section>
+
+      <section class="adm-card quick-actions-card">
+        <div class="section-heading"><div><span class="section-kicker">Shortcuts</span><h2 class="adm-card-title">Quick actions</h2></div></div>
+        <div class="quick-actions">
+          <a routerLink="/admin/products"><span>+</span><div><strong>Add product</strong><small>Grow your catalog</small></div></a>
+          <a routerLink="/admin/categories"><span>⌂</span><div><strong>Manage categories</strong><small>Organize your store</small></div></a>
+          <a routerLink="/admin/settings"><span>⚙</span><div><strong>Site settings</strong><small>Update your brand</small></div></a>
+        </div>
+      </section>
+    </div>
+
     <!-- Recent Orders -->
-    <div class="adm-card">
+    <div class="adm-card recent-orders-card">
       <div class="adm-card-header">
-        <h2 class="adm-card-title">Recent orders</h2>
-        <a routerLink="/admin/orders" class="adm-card-link">
-          View all →
-        </a>
+        <div><span class="section-kicker">Latest activity</span><h2 class="adm-card-title">Recent orders</h2></div>
+        <a routerLink="/admin/orders" class="adm-card-link">View all →</a>
       </div>
 
       <div class="adm-table-wrap">
@@ -73,6 +104,9 @@
             </tr>
           </thead>
           <tbody>
+            @if (recentOrders().length === 0) {
+              <tr><td colspan="6" class="dashboard-empty">No orders have been placed yet.</td></tr>
+            }
             @for (order of recentOrders(); track order.id) {
               <tr>
                 <td class="order-id-cell">#{{ order.id }}</td>
