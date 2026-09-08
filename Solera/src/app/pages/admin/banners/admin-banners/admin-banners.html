@@ -4,9 +4,6 @@
       <h1 class="adm-page-title">Banners</h1>
       <p class="adm-page-sub">Manage home page banners</p>
     </div>
-    <button class="adm-btn-primary" (click)="showForm.set(true)">
-      + Add Banner
-    </button>
   </div>
 
   @if (successMessage()) {
@@ -90,7 +87,7 @@
   }
 
   <div class="adm-card admin-data-card">
-    <div class="admin-table-toolbar"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Banners</strong></div><div class="admin-table-search"><input type="search" placeholder="Search Banner" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search banners" /><span>⌕</span></div></div>
+    <div class="admin-table-toolbar"><div class="admin-table-toolbar-top"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Banners</strong></div><button class="admin-table-add" (click)="showForm.set(true)"><span>+</span> Add Banner</button></div><div class="admin-table-search"><input type="search" placeholder="Search Banner" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search banners" /><span>⌕</span></div></div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>
@@ -117,18 +114,27 @@
               </td>
               <td>
                 <button
-                  class="toggle-btn"
+                  class="banner-action-btn banner-status-action"
                   [class.toggle-active]="banner.isActive"
                   [class.toggle-inactive]="!banner.isActive"
-                  (click)="toggleBanner(banner.id)">
+                  (click)="toggleBanner(banner.id)"
+                  [attr.title]="banner.isActive ? 'Deactivate banner' : 'Activate banner'">
+                  <span class="banner-action-dot"></span>
                   {{ banner.isActive ? 'Active' : 'Inactive' }}
                 </button>
               </td>
               <td>
-                <button class="adm-delete-btn"
-                        (click)="deleteBanner(banner.id)">
-                  Delete
-                </button>
+                <div class="banner-actions">
+                  @if (banner.linkUrl) {
+                    <a class="banner-action-btn banner-preview-action" [href]="banner.linkUrl" target="_blank" rel="noopener" title="Preview banner link">
+                      <span aria-hidden="true">↗</span> Preview
+                    </a>
+                  }
+                  <button class="banner-action-btn banner-delete-action"
+                          (click)="deleteBanner(banner.id)" title="Delete banner">
+                    <span aria-hidden="true">&#128465;</span> Delete
+                  </button>
+                </div>
               </td>
             </tr>
           }

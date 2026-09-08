@@ -25,9 +25,8 @@
   <!-- Orders Table -->
   <div class="adm-card admin-data-card">
     <div class="admin-table-toolbar">
-      <div class="admin-table-heading">
-        <span class="admin-table-heading-icon">✦</span>
-        <strong>Orders</strong>
+      <div class="admin-table-toolbar-top">
+        <div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Orders</strong></div>
       </div>
       <div class="admin-table-search">
         <input type="search" placeholder="Search Order or Customer" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search orders" />

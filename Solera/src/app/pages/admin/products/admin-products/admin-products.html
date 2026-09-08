@@ -6,9 +6,6 @@
         {{ products().length }} total products
       </p>
     </div>
-    <button class="adm-btn-primary" (click)="openAddForm()">
-      + Add Product
-    </button>
   </div>
 
   @if (successMessage()) {
@@ -161,9 +158,9 @@
   <!-- Products Table -->
   <div class="adm-card admin-data-card">
     <div class="admin-table-toolbar">
-      <div class="admin-table-heading">
-        <span class="admin-table-heading-icon">✦</span>
-        <strong>Products</strong>
+      <div class="admin-table-toolbar-top">
+        <div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Products</strong></div>
+        <button class="admin-table-add" (click)="openAddForm()"><span>+</span> Add Product</button>
       </div>
       <div class="admin-table-search">
         <input type="search" placeholder="Search Product" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search products" />

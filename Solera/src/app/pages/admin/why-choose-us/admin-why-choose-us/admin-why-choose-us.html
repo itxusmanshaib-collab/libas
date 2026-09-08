@@ -4,9 +4,6 @@
       <h1 class="adm-page-title">Why Choose Us</h1>
       <p class="adm-page-sub">Manage why choose us features displayed on the site</p>
     </div>
-    <button class="adm-btn-primary" (click)="openAdd()">
-      + Add Item
-    </button>
   </div>
 
   @if (successMessage()) {
@@ -57,7 +54,7 @@
   }
 
   <div class="adm-card admin-data-card">
-    <div class="admin-table-toolbar"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Why Choose Us</strong></div><div class="admin-table-search"><input type="search" placeholder="Search Feature" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search features" /><span>⌕</span></div></div>
+    <div class="admin-table-toolbar"><div class="admin-table-toolbar-top"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Why Choose Us</strong></div><button class="admin-table-add" (click)="openAdd()"><span>+</span> Add Item</button></div><div class="admin-table-search"><input type="search" placeholder="Search Feature" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search features" /><span>⌕</span></div></div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>

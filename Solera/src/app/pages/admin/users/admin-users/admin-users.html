@@ -12,16 +12,14 @@
 
   <div class="adm-card admin-data-card">
     <div class="admin-table-toolbar">
-      <div class="admin-table-heading">
-        <span class="admin-table-heading-icon">✦</span>
-        <strong>Users</strong>
+      <div class="admin-table-toolbar-top">
+        <div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Users</strong></div>
       </div>
       <div class="admin-table-search">
         <input type="search" placeholder="Search User" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search users" />
         <span aria-hidden="true">⌕</span>
       </div>
     </div>
-    <div class="adm-table-wrap">
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>

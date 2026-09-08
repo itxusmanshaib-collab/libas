@@ -4,9 +4,6 @@
       <h1 class="adm-page-title">Testimonials</h1>
       <p class="adm-page-sub">Manage customer testimonials</p>
     </div>
-    <button class="adm-btn-primary" (click)="openAdd()">
-      + Add Testimonial
-    </button>
   </div>
 
   @if (successMessage()) {
@@ -67,7 +64,7 @@
   }
 
   <div class="adm-card admin-data-card">
-    <div class="admin-table-toolbar"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Testimonials</strong></div><div class="admin-table-search"><input type="search" placeholder="Search Testimonial" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search testimonials" /><span>⌕</span></div></div>
+    <div class="admin-table-toolbar"><div class="admin-table-toolbar-top"><div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Testimonials</strong></div><button class="admin-table-add" (click)="openAdd()"><span>+</span> Add Testimonial</button></div><div class="admin-table-search"><input type="search" placeholder="Search Testimonial" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search testimonials" /><span>⌕</span></div></div>
     <div class="adm-table-wrap">
       <table class="adm-table">
         <thead>

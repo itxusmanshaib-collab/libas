@@ -4,9 +4,6 @@
       <h1 class="adm-page-title">Categories</h1>
       <p class="adm-page-sub">{{ categories().length }} categories</p>
     </div>
-    <button class="adm-btn-primary" (click)="openAddForm()">
-      + Add Category
-    </button>
   </div>
 
   @if (successMessage()) {
@@ -53,9 +50,9 @@
 
   <div class="adm-card admin-data-card">
     <div class="admin-table-toolbar">
-      <div class="admin-table-heading">
-        <span class="admin-table-heading-icon">✦</span>
-        <strong>Categories</strong>
+      <div class="admin-table-toolbar-top">
+        <div class="admin-table-heading"><span class="admin-table-heading-icon">✦</span><strong>Categories</strong></div>
+        <button class="admin-table-add" (click)="openAddForm()"><span>+</span> Add Category</button>
       </div>
       <div class="admin-table-search">
         <input type="search" placeholder="Search Category" [value]="searchTerm()" (input)="updateSearch($any($event.target).value)" aria-label="Search categories" />
