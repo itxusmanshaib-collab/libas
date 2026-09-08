@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj": {}
+    "D:\\New folder\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Project\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj": {
+    "D:\\New folder\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj",
+        "projectUniqueName": "D:\\New folder\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj",
         "projectName": "Solera.Domain",
-        "projectPath": "D:\\Project\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj",
+        "projectPath": "D:\\New folder\\SoleraBackend\\Solera.Domain\\Solera.Domain.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\SoleraBackend\\Solera.Domain\\obj\\",
+        "outputPath": "D:\\New folder\\SoleraBackend\\Solera.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

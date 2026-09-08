@@ -1,9 +1,9 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AppConfigService } from '../../../../core/services/app-config.service';
 import { ApiService } from '../../../../core/services/api.service';
+import { ImageService } from '../../../../core/services/image.service';
 import { CustomDropdownComponent, DropdownOption } from '../../../../shared/components/custom-dropdown/custom-dropdown';
 
 
@@ -18,7 +18,20 @@ interface Order {
   longitude?: number;
   locationAddress?: string;
   user: { fullName: string; email: string };
-  items: any[];
+  items: OrderItem[];
+}
+
+interface OrderItem {
+  id: number;
+  productId: number;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+  selectedColor?: string;
+  selectedSize?: string;
+  quantity: number;
+  unitPrice: number;
+  subTotal: number;
 }
 
 @Component({
@@ -32,13 +45,14 @@ export class AdminOrdersComponent implements OnInit {
 
   private api = inject(ApiService);
   config = inject(AppConfigService);
-  private router = inject(Router);
+  imageService = inject(ImageService);
 
   orders = signal<Order[]>([]);
   isLoading = signal(true);
   updatingOrderId = signal<number | null>(null);
   filterStatus = signal('All');
   successMessage = signal('');
+  selectedOrder = signal<Order | null>(null);
 
   statuses = ['All', 'Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
@@ -114,6 +128,15 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   navigateToDetail(orderId: number): void {
-    this.router.navigate(['/order-detail', orderId]);
+    const order = this.orders().find(item => item.id === orderId);
+    if (order) this.selectedOrder.set(order);
+  }
+
+  closeDetails(): void {
+    this.selectedOrder.set(null);
+  }
+
+  getImageUrl(path: string | undefined): string {
+    return this.imageService.getImageUrl(path);
   }
 }

@@ -1,14 +1,17 @@
 <div class="adm-wrap">
 
   <!-- Sidebar Toggle Button (only on mobile) -->
-  <button class="sidebar-toggle" (click)="isSidebarOpen.set(!isSidebarOpen())">
+    <button class="sidebar-toggle"
+      (click)="isSidebarOpen.set(!isSidebarOpen())"
+      [attr.aria-expanded]="isSidebarOpen()"
+      aria-label="Toggle admin navigation">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M3 6h18M3 12h18M3 18h18"/>
     </svg>
   </button>
 
   <!-- Sidebar -->
-  <aside class="adm-sidebar">
+  <aside class="adm-sidebar" [class.open]="isSidebarOpen()">
 
     <!-- Logo -->
     <div class="adm-logo">
@@ -20,7 +23,7 @@
     </div>
 
     <!-- Nav -->
-    <nav class="adm-nav" aria-label="Admin navigation">
+    <nav class="adm-nav" aria-label="Admin navigation" (click)="isSidebarOpen.set(false)">
 
       <div class="adm-nav-section">
         <div class="adm-nav-label">Main</div>
@@ -188,7 +191,7 @@
 
   <!-- Sidebar Overlay (only on mobile) -->
   <div class="sidebar-overlay" 
-     [class.active]="!isSidebarOpen()" 
+      [class.active]="isSidebarOpen()" 
      (click)="isSidebarOpen.set(false)"></div>
 
   <!-- Main Content -->

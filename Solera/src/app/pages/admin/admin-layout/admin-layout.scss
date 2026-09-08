@@ -8,19 +8,20 @@
 
 .adm-wrap {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 248px minmax(0, 1fr);
   min-height: 100vh;
+  background: #f3f5f4;
 }
 
 .adm-sidebar {
-  background: #1a1a1a;
+  background: #17232c;
   display: flex;
   flex-direction: column;
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -35,7 +36,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 20px;
+  min-height: 78px;
+  padding: 20px 22px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
   &:hover .adm-logo-mark {
@@ -48,7 +50,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d4a574 0%, #c49464 100%);
+  background: #d4a574;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +82,7 @@
 }
 
 .adm-nav {
-  padding: 12px 0;
+  padding: 18px 0 20px;
   flex: 1;
 }
 
@@ -91,7 +93,7 @@
 
 .adm-nav-label {
   font-size: 10px;
-  color: #555;
+  color: #71818b;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   padding: 8px 8px 4px;
@@ -102,10 +104,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 10px;
+  min-height: 40px;
+  padding: 9px 12px;
   border-radius: 7px;
   cursor: pointer;
-  color: #888;
+  color: #aab5ba;
   font-size: 13px;
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,14 +125,14 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ccc;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f5f7f7;
 
     svg { color: #d4a574; }
   }
 
   &.adm-nav-active {
-    background: rgba(212, 165, 116, 0.1);
+    background: rgba(212, 165, 116, 0.14);
     color: #d4a574;
     font-weight: 500;
 
@@ -158,19 +161,21 @@
 
 .adm-nav-divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.1);
   margin: 8px 12px;
 }
 
 .adm-main {
-  background: #f5f5f3;
+  background: #f3f5f4;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .adm-page {
-  padding: 28px 32px 48px;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px clamp(20px, 3vw, 48px) 56px;
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -178,13 +183,14 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   gap: 16px;
   animation: slideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adm-page-title {
-  font-size: 22px;
+  margin: 0;
+  font-size: clamp(21px, 2vw, 28px);
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.3px;
@@ -193,7 +199,7 @@
 .adm-page-sub {
   font-size: 13px;
   color: #999;
-  margin-top: 3px;
+  margin: 5px 0 0;
 }
 
 .adm-loading {
@@ -201,6 +207,12 @@
   align-items: center;
   justify-content: center;
   min-height: 50vh;
+}
+
+.adm-nav-item:focus-visible,
+.sidebar-toggle:focus-visible {
+  outline: 3px solid rgba(212, 165, 116, 0.48);
+  outline-offset: 2px;
 }
 
 /* ═══════════════════════════════════════════
@@ -304,7 +316,7 @@
   }
 
   .adm-page {
-    padding: 64px 16px 40px;
+    padding: 72px 16px 40px;
   }
 
   .adm-page-header {
@@ -315,7 +327,7 @@
 
 @media (max-width: 480px) {
   .adm-page {
-    padding: 56px 12px 32px;
+    padding: 68px 12px 32px;
   }
 
   .adm-page-title {

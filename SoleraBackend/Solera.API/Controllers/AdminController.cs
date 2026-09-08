@@ -150,11 +150,16 @@ public class AdminController : ControllerBase
                 },
                 Items = o.OrderItems.Select(oi => new
                 {
+                    oi.Id,
+                    oi.ProductId,
                     oi.Product.Name,
+                    oi.Product.Description,
+                    oi.Product.ImageUrl,
                     oi.SelectedColor,
                     oi.SelectedSize,
                     oi.Quantity,
-                    oi.UnitPrice
+                    oi.UnitPrice,
+                    SubTotal = oi.UnitPrice * oi.Quantity
                 })
             })
             .ToListAsync();

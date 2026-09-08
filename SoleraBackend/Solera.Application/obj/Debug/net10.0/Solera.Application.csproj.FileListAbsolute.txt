@@ -14,3 +14,19 @@ D:\Project\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application
 D:\Project\SoleraBackend\Solera.Application\obj\Debug\net10.0\refint\Solera.Application.dll
 D:\Project\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.pdb
 D:\Project\SoleraBackend\Solera.Application\obj\Debug\net10.0\ref\Solera.Application.dll
+D:\New folder\SoleraBackend\Solera.Application\bin\Debug\net10.0\Solera.Application.deps.json
+D:\New folder\SoleraBackend\Solera.Application\bin\Debug\net10.0\Solera.Application.dll
+D:\New folder\SoleraBackend\Solera.Application\bin\Debug\net10.0\Solera.Application.pdb
+D:\New folder\SoleraBackend\Solera.Application\bin\Debug\net10.0\Solera.Domain.dll
+D:\New folder\SoleraBackend\Solera.Application\bin\Debug\net10.0\Solera.Domain.pdb
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.csproj.AssemblyReference.cache
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.AssemblyInfoInputs.cache
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.AssemblyInfo.cs
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.csproj.CoreCompileInputs.cache
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.sourcelink.json
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.A.90344660.Up2Date
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.dll
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\refint\Solera.Application.dll
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\Solera.Application.pdb
+D:\New folder\SoleraBackend\Solera.Application\obj\Debug\net10.0\ref\Solera.Application.dll

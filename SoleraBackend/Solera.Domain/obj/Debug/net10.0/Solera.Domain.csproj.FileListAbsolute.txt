@@ -10,3 +10,15 @@ D:\Project\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.dll
 D:\Project\SoleraBackend\Solera.Domain\obj\Debug\net10.0\refint\Solera.Domain.dll
 D:\Project\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.pdb
 D:\Project\SoleraBackend\Solera.Domain\obj\Debug\net10.0\ref\Solera.Domain.dll
+D:\New folder\SoleraBackend\Solera.Domain\bin\Debug\net10.0\Solera.Domain.deps.json
+D:\New folder\SoleraBackend\Solera.Domain\bin\Debug\net10.0\Solera.Domain.dll
+D:\New folder\SoleraBackend\Solera.Domain\bin\Debug\net10.0\Solera.Domain.pdb
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.AssemblyInfoInputs.cache
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.AssemblyInfo.cs
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.csproj.CoreCompileInputs.cache
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.sourcelink.json
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.dll
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\refint\Solera.Domain.dll
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\Solera.Domain.pdb
+D:\New folder\SoleraBackend\Solera.Domain\obj\Debug\net10.0\ref\Solera.Domain.dll
