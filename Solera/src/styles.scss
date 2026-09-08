@@ -116,6 +116,12 @@
   max-width: 1200px;
 }
 
+/* Feature pages set their own max-width; allow the collapsed shell to use the full viewport. */
+.adm-wrap.sidebar-hidden .adm-page {
+  width: 100%;
+  max-width: none !important;
+}
+
 .adm-loading {
   display: flex;
   align-items: center;

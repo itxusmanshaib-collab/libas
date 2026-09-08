@@ -1,9 +1,9 @@
-<div class="adm-wrap">
+<div class="adm-wrap" [class.sidebar-hidden]="!isSidebarVisible()">
   <app-admin-confirm-dialog></app-admin-confirm-dialog>
 
   <!-- Sidebar Toggle Button (only on mobile) -->
     <button class="sidebar-toggle"
-      (click)="isSidebarOpen.set(!isSidebarOpen())"
+      (click)="toggleSidebar()"
       [attr.aria-expanded]="isSidebarOpen()"
       aria-label="Toggle admin navigation">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -197,6 +197,44 @@
 
   <!-- Main Content -->
   <main class="adm-main">
+    <header class="adm-topbar">
+      <div class="adm-topbar-context">
+        <button class="adm-header-menu" (click)="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <span class="adm-breadcrumb">Workspace <b>/</b> Admin</span>
+        <h1>{{ pageTitle() }}</h1>
+      </div>
+
+      <div class="adm-topbar-actions">
+        <label class="adm-global-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input type="search" placeholder="Search workspace" aria-label="Search admin workspace" (keydown.enter)="searchWorkspace($any($event.target).value)" />
+          <kbd>⌘ K</kbd>
+        </label>
+        <a routerLink="/" class="adm-view-site" aria-label="Open storefront" title="Open storefront">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg>
+        </a>
+        <button class="adm-notification-button" aria-label="Notifications" title="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M10 21h4"/></svg>
+          <span></span>
+        </button>
+        <div class="adm-profile-wrap">
+          <button class="adm-profile-button" (click)="toggleProfileMenu()" [attr.aria-expanded]="showProfileMenu()" aria-label="Open profile menu">
+            <span class="adm-profile-avatar">{{ userInitials() }}</span>
+            <span class="adm-profile-copy"><strong>{{ auth.userName() || 'Administrator' }}</strong><small>Administrator</small></span>
+            <svg class="adm-profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          @if (showProfileMenu()) {
+            <div class="adm-profile-menu">
+              <div class="adm-profile-menu-heading"><span class="adm-profile-avatar">{{ userInitials() }}</span><div><strong>{{ auth.userName() || 'Administrator' }}</strong><small>Admin account</small></div></div>
+              <a routerLink="/profile" (click)="closeProfileMenu()">View profile</a>
+              <button (click)="auth.logout()">Sign out</button>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
     <router-outlet></router-outlet>
   </main>
 </div>
