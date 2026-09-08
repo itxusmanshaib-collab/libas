@@ -122,6 +122,18 @@
   max-width: none !important;
 }
 
+/* Keep every admin workspace page balanced in both sidebar states. */
+.adm-main .adm-page,
+.adm-main .admin-settings-page {
+  width: 100%;
+  max-width: none !important;
+}
+
+.adm-main > * {
+  display: block;
+  width: 100%;
+}
+
 .adm-loading {
   display: flex;
   align-items: center;
